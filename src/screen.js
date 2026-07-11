@@ -17,9 +17,10 @@ export function ScreenDisplay(){
 
     todoItems.forEach(element => {
         const itemContainer = document.createElement('div');
-        itemContainer.classList = 'item';
-        itemContainer.textContent = element['title'];
+        itemContainer.classList = 'itemContainer';
         taskDisplay.appendChild(itemContainer)
+
+        
 
     });
 

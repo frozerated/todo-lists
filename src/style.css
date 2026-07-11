@@ -23,6 +23,6 @@
     grid-column: 1;
 }
 
-.item{
+.itemContainer{
     border: solid 1px gray;
 }
