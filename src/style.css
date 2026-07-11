@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+.container > div{
+    border: black solid 2px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    min-height: 100vh;
+
+}
+
+.main{
+    grid-column: 2;
+}
+
+.sidebar{
+    grid-row: 1;
+    grid-column: 1;
+}
