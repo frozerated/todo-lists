@@ -29,11 +29,24 @@ function todoList() {
         });
     }
 
+    const changePriority = (title, newPriority) => {
+        todoItems.forEach((item, index) => {
+            if (item['title'] == title) {
+                item['priority'] = newPriority;
+
+            }
+
+        });
+
+    }
+
+
     return {
         getItems,
         addTodo,
         markComplete,
         getCompleted,
+        changePriority,
     }
 }
 
