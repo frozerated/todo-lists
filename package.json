@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/frozerated/webpack-template#readme",
   "devDependencies": {
+    "css-loader": "^7.1.4",
     "html-webpack-plugin": "^5.6.7",
+    "style-loader": "^4.0.0",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",
     "webpack-dev-server": "^6.0.0",
