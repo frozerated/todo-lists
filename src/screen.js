@@ -18,8 +18,23 @@ export function ScreenDisplay(){
     todoItems.forEach(element => {
         const itemContainer = document.createElement('div');
         itemContainer.classList = 'itemContainer';
-        taskDisplay.appendChild(itemContainer)
+        
 
+        const title = document.createElement('p');
+        title.classList = 'title';
+        title.textContent = element['title'];
+        itemContainer.appendChild(title);
+        
+        const dueDate = document.createElement('p');
+        dueDate.textContent = element['dueDate'];
+        dueDate.classList = 'dueDate';
+        itemContainer.appendChild(dueDate);
+
+        const completeButton = document.createElement('button');
+        completeButton.classList = 'completeButton';
+        itemContainer.appendChild(completeButton);
+
+        taskDisplay.appendChild(itemContainer);
         
 
     });

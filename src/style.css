@@ -25,4 +25,6 @@
 
 .itemContainer{
     border: solid 1px gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 200px
 }
