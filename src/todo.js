@@ -4,25 +4,43 @@
 //An array of objects of lists
 import { format } from "date-fns";
 
-function todoList(){
+function todoList() {
     let todoItems = [];
+    let completedItems = [];
+
 
     const getItems = () => todoItems;
+    const getCompleted = () => completedItems;
 
     const addTodo = (title, description, dueDate, project, priority) => {
         todoItems.push(todoItem(title, description, dueDate, project, priority,))
     }
 
-    return{
+
+    const markComplete = (title) => {
+        todoItems.forEach((item, index) => {
+            if (item['title'] == title) {
+                const completed = todoItems.splice(index, (index + 1))
+                console.log(completed);
+
+                completedItems.push(completed[0]);
+            }
+
+        });
+    }
+
+    return {
         getItems,
         addTodo,
+        markComplete,
+        getCompleted,
     }
 }
 
-function todoItem(title, description="", dueDate, project='default', priority='none'){
+function todoItem(title, description = "", dueDate, project = 'default', priority = 'none') {
 
     dueDate = format(new Date(dueDate), 'MMM/dd/yyyy')
-    return{
+    return {
         title,
         description,
         dueDate,
@@ -32,9 +50,4 @@ function todoItem(title, description="", dueDate, project='default', priority='n
 }
 
 
-const result = format(new Date('2025, 1, 25'), 'MM/dd/yyyy');
-
-console.log(result);
-
-
-export { todoList}
+export { todoList }
