@@ -21,7 +21,6 @@ function todoList() {
         todoItems.forEach((item, index) => {
             if (item['title'] == title) {
                 const completed = todoItems.splice(index, (index + 1))
-                console.log(completed);
 
                 completedItems.push(completed[0]);
             }
@@ -40,6 +39,15 @@ function todoList() {
 
     }
 
+    const removeItem = (title) =>{
+        todoItems.forEach((item, index)=>{
+            if(item['title'] == title){
+                todoItems.splice(index, (index + 1))
+            }
+
+        });
+    }
+
 
     return {
         getItems,
@@ -47,6 +55,7 @@ function todoList() {
         markComplete,
         getCompleted,
         changePriority,
+        removeItem,
     }
 }
 
