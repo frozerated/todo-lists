@@ -40,6 +40,8 @@ export function ScreenDisplay(){
     
             const completeButton = document.createElement('button');
             completeButton.classList = 'completeButton';
+            completeButton.id = element['id']
+            completeButton.addEventListener('click', markComplete)
             itemContainer.appendChild(completeButton);
     
             taskDisplay.appendChild(itemContainer);
@@ -81,6 +83,20 @@ export function ScreenDisplay(){
         todo.addTodo(title, desc, dueDate, project, priority)
         updateDisplay();
 
+    }
+
+    const markComplete = (event) => {
+    
+        todo.markComplete(event.target.id);
+        updateDisplay();
+        console.log("---- Todo After: ");
+        
+        console.log(todo.getItems());
+        console.log("---- Completed : ");
+        
+        console.log(todo.getCompleted());
+        
+        
     }
 
 
