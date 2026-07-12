@@ -17,9 +17,9 @@ function todoList() {
     }
 
 
-    const markComplete = (title) => {
+    const markComplete = (id) => {
         todoItems.forEach((item, index) => {
-            if (item['title'] == title) {
+            if (item['id'] == id) {
                 const completed = todoItems.splice(index, (index + 1))
 
                 completedItems.push(completed[0]);
