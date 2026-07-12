@@ -61,9 +61,11 @@ function todoList() {
 
 function todoItem(title, description = "", dueDate, project = 'default', priority = 'none') {
 
-    dueDate = new Date(dueDate)
+    dueDate = new Date(dueDate);
+    const id = crypto.randomUUID().slice(1,15);
 
     return {
+        id,
         title,
         description,
         dueDate,
