@@ -2,7 +2,7 @@
 //List attributes: title, description, dueDate, priority
 //Add lists to an array
 //An array of objects of lists
-import { format } from "date-fns";
+import { format, endOfToday} from "date-fns";
 
 function todoList() {
     let todoItems = [];
@@ -48,7 +48,7 @@ function todoList() {
         });
     }
 
-
+    
     return {
         getItems,
         addTodo,
@@ -61,7 +61,8 @@ function todoList() {
 
 function todoItem(title, description = "", dueDate, project = 'default', priority = 'none') {
 
-    dueDate = format(new Date(dueDate), 'MMM/dd/yyyy')
+    dueDate = new Date(dueDate)
+
     return {
         title,
         description,
