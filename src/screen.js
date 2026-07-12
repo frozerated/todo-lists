@@ -1,3 +1,4 @@
+import { endOfToday } from "date-fns";
 import { todoList } from "./todo.js";
 
 export function ScreenDisplay(){
@@ -7,7 +8,9 @@ export function ScreenDisplay(){
     const taskDisplay = document.querySelector('.tasksContainer');
     const taskModal = document.querySelector('#task-modal');
     const openModal = document.querySelector('#open-modal');
-    const closeModal = document.querySelector('#close-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const addTaskButton = document.querySelector('#addTask');
+    const taskForm = document.querySelector('#task-form')
     
     // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
@@ -19,7 +22,7 @@ export function ScreenDisplay(){
 
 
     const updateDisplay = () => {
-
+        taskDisplay.textContent = "";
         todoItems.forEach(element => {
             const itemContainer = document.createElement('div');
             itemContainer.classList = 'itemContainer';
@@ -57,7 +60,26 @@ export function ScreenDisplay(){
     closeModal.addEventListener('click', (event)=>{
         taskModal.close();
     })
+
+    addTaskButton.addEventListener('click', (event)=>{
+        addTask();
+    });
+
+
+
     const addTask = () =>{
+        const title = document.querySelector('#title').value;
+        let dueDate = document.querySelector('#dueDate').value;
+        const project = document.querySelector('#project').value;
+        const priority = document.querySelector('#priority').value;
+        const desc = document.querySelector('#desc').value;
+
+        console.log(dueDate);
+        
+        if(!dueDate) dueDate = endOfToday();
+        
+        todo.addTodo(title, desc, dueDate, project, priority)
+        updateDisplay();
 
     }
 
