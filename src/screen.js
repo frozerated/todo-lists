@@ -4,7 +4,7 @@ export function ScreenDisplay(){
     const todo = todoList();
     const todoItems = todo.getItems();
 
-    const taskDisplay = document.querySelector('.main')
+    const taskDisplay = document.querySelector('.tasksContainer')
 
     // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
