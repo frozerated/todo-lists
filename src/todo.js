@@ -59,6 +59,35 @@ function todoList() {
     }
 }
 
+function todoProjects(){
+    let projectList = [];
+
+
+    const getProjects = () => projectList;
+
+    const addProject = (title) => {
+        console.log("Add" + title);
+        // projectList[1] = {projectName: title}
+        
+        projectList.push(projectItem(title));
+    }
+
+    return {
+        getProjects,
+        addProject,
+    }
+}
+
+function projectItem(title){
+    console.log("ProjectItem" + title);
+    
+    return {
+        "projectName" : title,
+        "projectTodo" : [],
+    }
+}
+
+
 function todoItem(title, description = "", dueDate, project = 'default', priority = 'none') {
 
     dueDate = new Date(dueDate);
@@ -75,4 +104,4 @@ function todoItem(title, description = "", dueDate, project = 'default', priorit
 }
 
 
-export { todoList }
+export { todoList, todoProjects}
