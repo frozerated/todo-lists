@@ -13,12 +13,14 @@
 
             <dialog id="task-modal" class="modal">
                 <h1>Add Task</h1>
-                <form id="task-form">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title">
+                <form id="task-form" method="dialog">
+                    <div>
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="title">
+                    </div>
                     
                     <label for="dueDate">Deadline: </label>
-                    <input type="datetime-local" name="" id="">
+                    <input type="datetime-local" name="dueDate" id="dueDate">
                 
 
                     <label for="project">Project:</label>
@@ -38,9 +40,9 @@
                     
 
                 </form>
-
-                <button id="addTask">Add Task</button>
+                <button id="addTask" type="submit" form="task-form">Add Task</button>
                 <button class="close-modal">Close</button>
+                
             </dialog>
             
             <div class="tasksContainer">
