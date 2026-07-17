@@ -1,4 +1,4 @@
-import { endOfToday, nextMonday } from "date-fns";
+import { endOfToday } from "date-fns";
 import { todoList, todoProjects } from "./todo.js";
 
 export function ScreenDisplay(){
@@ -22,17 +22,19 @@ export function ScreenDisplay(){
     // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
 
-    todo.addTodo('123', '', dueDate);
+    todo.addTodo('Task 1', '', dueDate);
     todo.addTodo('Task 2', '', dueDate);
     todo.addTodo('Task 3', '', dueDate);
     //--
 
 
-    const updateDisplay = () => {
-        displayTasks(taskDisplay, todoItems);
+    const displayScreen = () =>{
+        updateTaskDisplay();
         displayProjects();
-        // displayTasks(projectDisplay, projectItems)
-        // updateProjectDisplay();
+    }
+
+    const updateTaskDisplay = () => {
+        displayTasks(taskDisplay, todoItems);
     }
     
     const displayTasks = (displayArea, itemList) => {
@@ -61,7 +63,7 @@ export function ScreenDisplay(){
             displayArea.appendChild(itemContainer);
     
             
-            
+    
         });
         
         
@@ -84,7 +86,7 @@ export function ScreenDisplay(){
         }
     }
 
-                
+
     
     openModal.addEventListener('click', (event) => {
         // taskModal.showModal();
@@ -115,7 +117,7 @@ export function ScreenDisplay(){
         if(!dueDate) dueDate = endOfToday();
         
         todo.addTodo(title, desc, dueDate, project, priority)
-        updateDisplay();
+        updateTaskDisplay();
 
     }
 
@@ -131,7 +133,7 @@ export function ScreenDisplay(){
     const markComplete = (event) => {
     
         todo.markComplete(event.target.id);
-        updateDisplay();
+        updateTaskDisplay();
         console.log("---- Todo After: ");
         
         console.log(todo.getItems());
@@ -164,7 +166,7 @@ export function ScreenDisplay(){
 
 
     return{
-        updateDisplay,
+        displayScreen,
     }
     
 }
