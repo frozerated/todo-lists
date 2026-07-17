@@ -53,7 +53,7 @@ export function ScreenDisplay(){
             itemContainer.appendChild(title);
             
             const dueDate = document.createElement('p');
-            dueDate.textContent = element['dueDate'];
+            dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
             dueDate.classList = 'dueDate';
             itemContainer.appendChild(dueDate);
     
