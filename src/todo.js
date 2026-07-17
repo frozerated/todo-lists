@@ -99,7 +99,6 @@ function todoProjects(){
                         projectTask.splice(taskIndex, 1);
                         break projectLoop;
                     }
-                    console.log("ex");
                 }
             }
             index++
