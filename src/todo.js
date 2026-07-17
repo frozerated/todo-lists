@@ -48,7 +48,7 @@ function todoList() {
         });
     }
 
-    
+
     return {
         getItems,
         addTodo,
@@ -62,24 +62,40 @@ function todoList() {
 function todoProjects(){
     let projectList = [];
 
-
     const getProjects = () => projectList;
 
     const addProject = (title) => {
-        console.log("Add" + title);
-        // projectList[1] = {projectName: title}
-        
         projectList.push(projectItem(title));
     }
+
+
+    const addTask = (todoItems, projectName, taskID) => {
+    
+        let index = 0; //current project
+        for(const project of projectList){
+            if(project['projectName'] == projectName){
+                for(const task of todoItems){
+                    if(task["id"] == taskID){
+                        projectList[index]["projectTodo"].push(task);
+                        return;
+                    }
+                }
+            }else{
+                index++ // to move to other project
+            }
+        }
+    }
+
+
 
     return {
         getProjects,
         addProject,
+        addTask,
     }
 }
 
 function projectItem(title){
-    console.log("ProjectItem" + title);
     
     return {
         "projectName" : title,
