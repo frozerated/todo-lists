@@ -72,12 +72,12 @@ function todoProjects(){
     const addTask = (todoItems, projectName, taskID) => {
     
         let index = 0; //current project
-        for(const project of projectList){
+        projectLoop: for(const project of projectList){
             if(project['projectName'] == projectName){
                 for(const task of todoItems){
                     if(task["id"] == taskID){
                         projectList[index]["projectTodo"].push(task);
-                        return;
+                        break projectLoop;
                     }
                 }
             }else{
