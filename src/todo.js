@@ -42,7 +42,7 @@ function todoList() {
     const removeItem = (title) =>{
         todoItems.forEach((item, index)=>{
             if(item['title'] == title){
-                todoItems.splice(index, (index + 1))
+                todoItems.splice(index, 1)
             }
 
         });
@@ -86,12 +86,33 @@ function todoProjects(){
         }
     }
 
+    const removeTask = (projectName, taskID) => {
+
+        let index = 0;
+        projectLoop: for(const project of projectList){
+            if (project['projectName'] == projectName){
+                const projectTask = projectList[index]['projectTodo'];
+                
+                for(const task of projectTask){
+                    let taskIndex = 0;
+                    if(task['id'] == taskID){                        
+                        projectTask.splice(taskIndex, 1);
+                        break projectLoop;
+                    }
+                    console.log("ex");
+                }
+            }
+            index++
+        }
+    }
+
 
 
     return {
         getProjects,
         addProject,
         addTask,
+        removeTask
     }
 }
 
