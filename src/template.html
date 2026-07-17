@@ -46,20 +46,30 @@
             </dialog>
             
             <div class="tasksContainer">
-
+                
             </div>
         </div>
-
+        
         <div class="sidebar">
             <h1>Projects</h1>
             <button id="open-pro" class="add-project" popovertarget="project-modal">Add Project</button>
             <div class="projectContainer">
-
+                
             </div>
-
+            
             <dialog id ="project-modal" class="project modal" popover>
+                <h1>Add Project</h1>
+                <form id="project-form" method="dialog">
+                    
+                </form>
+                <label for="projectName">Project Title: </label>
+                <input type="text" name="projectName" id="projectName">
 
-
+                <label for="projectColor">Project Color</label>
+                <input type="color" name="projectColor" id="projectColor">
+                
+                
+                <button id="addProject" type="submit" form="project-form">Add Project</button>
                 <button class="close-modal" popovertarget="project-modal" popovertargetaction="hide">Close</button>
             </dialog>
         </div>
