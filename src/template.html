@@ -52,12 +52,12 @@
         
         <div class="sidebar">
             <h1>Projects</h1>
-            <button id="open-pro" class="add-project" popovertarget="project-modal">Add Project</button>
+            <button id="open-project" class="add-project" command="show-modal" commandfor="project-modal">Add Project</button>
             <div class="projectContainer">
                 
             </div>
             
-            <dialog id ="project-modal" class="project modal" popover>
+            <dialog id ="project-modal" class="project modal">
                 <h1>Add Project</h1>
                 <form id="project-form" method="dialog">
                     
@@ -70,7 +70,7 @@
                 
                 
                 <button id="addProject" type="submit" form="project-form">Add Project</button>
-                <button class="close-modal" popovertarget="project-modal" popovertargetaction="hide">Close</button>
+                <button class="close-modal" commandfor="project-modal" command="close">Close</button>
             </dialog>
         </div>
     </div>
