@@ -9,9 +9,9 @@
     <div class="container">
         <div class="main">
             <h1>Tasks</h1>
-            <button id="open-modal">Add Task</button>
+            <button id="open-modal" popovertarget="task-modal"class="add-project">Add Task</button>
 
-            <dialog id="task-modal" class="modal">
+            <dialog id="task-modal" class="modal" popover>
                 <h1>Add Task</h1>
                 <form id="task-form" method="dialog">
                     <div>
@@ -41,7 +41,7 @@
 
                 </form>
                 <button id="addTask" type="submit" form="task-form">Add Task</button>
-                <button class="close-modal">Close</button>
+                <button class="close-modal" popovertarget="task-modal" popovertargetaction="hide">Close</button>
                 
             </dialog>
             
@@ -52,6 +52,16 @@
 
         <div class="sidebar">
             <h1>Projects</h1>
+            <button id="open-pro" class="add-project" popovertarget="project-modal">Add Project</button>
+            <div class="projectContainer">
+
+            </div>
+
+            <dialog id ="project-modal" class="project modal" popover>
+
+
+                <button class="close-modal" popovertarget="project-modal" popovertargetaction="hide">Close</button>
+            </dialog>
         </div>
     </div>
     
