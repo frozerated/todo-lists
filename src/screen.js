@@ -10,10 +10,6 @@ export function ScreenDisplay(){
     const taskDisplay = document.querySelector('.tasksContainer');
     const projectDisplay = document.querySelector('.projectContainer');
     
-    const taskModal = document.querySelector('#task-modal');
-    const openModal = document.querySelector('#open-modal');
-    const closeModal = document.querySelector('.close-modal');
-
     const addTaskButton = document.querySelector('#addTask');
     const taskForm = document.querySelector('#task-form')
 
@@ -76,7 +72,6 @@ export function ScreenDisplay(){
 
     const displayProjects = () => {
         projectDisplay.textContent = ""
-        // let index = 0;
         for(const item of projectItems){
             console.log(item['projectName']);
                 
@@ -85,18 +80,9 @@ export function ScreenDisplay(){
             projectName.classList = "projectName";
             projectDisplay.appendChild(projectName);
 
-            // index++;
         }
     }
 
-
-    
-    openModal.addEventListener('click', (event) => {
-        // taskModal.showModal();
-    });
-    closeModal.addEventListener('click', (event)=>{
-        taskModal.close();
-    })
 
     addTaskButton.addEventListener('click', (event)=>{
         addTask();
