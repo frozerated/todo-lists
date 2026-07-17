@@ -1,29 +1,43 @@
-import { endOfToday } from "date-fns";
-import { todoList } from "./todo.js";
+import { endOfToday, nextMonday } from "date-fns";
+import { todoList, todoProjects } from "./todo.js";
 
 export function ScreenDisplay(){
     const todo = todoList();
     const todoItems = todo.getItems();
+    const project = todoProjects();
+    const projectItems = project.getProjects();
 
     const taskDisplay = document.querySelector('.tasksContainer');
+    const projectDisplay = document.querySelector('.projectContainer');
+    
     const taskModal = document.querySelector('#task-modal');
     const openModal = document.querySelector('#open-modal');
     const closeModal = document.querySelector('.close-modal');
+
     const addTaskButton = document.querySelector('#addTask');
     const taskForm = document.querySelector('#task-form')
+
+    const addProjectButton = document.querySelector("#addProject");
     
     // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
 
-    todo.addTodo('Task 1', '', dueDate);
+    todo.addTodo('123', '', dueDate);
     todo.addTodo('Task 2', '', dueDate);
     todo.addTodo('Task 3', '', dueDate);
     //--
 
 
     const updateDisplay = () => {
+        displayTasks(taskDisplay, todoItems);
+        displayProjects();
+        // displayTasks(projectDisplay, projectItems)
+        // updateProjectDisplay();
+    }
+    
+    const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
-        todoItems.forEach(element => {
+        itemList.forEach(element => {
             const itemContainer = document.createElement('div');
             itemContainer.classList = 'itemContainer';
             
@@ -44,21 +58,37 @@ export function ScreenDisplay(){
             completeButton.addEventListener('click', markComplete)
             itemContainer.appendChild(completeButton);
     
-            taskDisplay.appendChild(itemContainer);
-            
+            displayArea.appendChild(itemContainer);
     
+            
+            
         });
-
+        
+        
+        
     }
 
 
+    const displayProjects = () => {
+        projectDisplay.textContent = ""
+        // let index = 0;
+        for(const item of projectItems){
+            console.log(item['projectName']);
+                
+            const projectName = document.createElement('button');
+            projectName.textContent = '# ' + item['projectName'];
+            projectName.classList = "projectName";
+            projectDisplay.appendChild(projectName);
+
+            // index++;
+        }
+    }
+
+                
     
     openModal.addEventListener('click', (event) => {
-        taskModal.showModal();
-        
-
+        // taskModal.showModal();
     });
-
     closeModal.addEventListener('click', (event)=>{
         taskModal.close();
     })
@@ -66,6 +96,12 @@ export function ScreenDisplay(){
     addTaskButton.addEventListener('click', (event)=>{
         addTask();
     });
+
+    addProjectButton.addEventListener('click', (event) =>{
+        addProject();
+    })
+
+
 
 
 
@@ -75,13 +111,20 @@ export function ScreenDisplay(){
         const project = document.querySelector('#project').value;
         const priority = document.querySelector('#priority').value;
         const desc = document.querySelector('#desc').value;
-
-        console.log(dueDate);
         
         if(!dueDate) dueDate = endOfToday();
         
         todo.addTodo(title, desc, dueDate, project, priority)
         updateDisplay();
+
+    }
+
+    const addProject = ()=>{
+        const projectName = document.querySelector("#projectName").value;
+        const projectColor =document.querySelector("#projectColor").value;
+
+        project.addProject(projectName);
+        displayProjects();
 
     }
 
@@ -97,12 +140,31 @@ export function ScreenDisplay(){
         console.log(todo.getCompleted());
         
         
+    
     }
+
+
+    // Testing purposes
+    project.addProject("STS");
+    project.addProject("IAS");
+    todo.addTodo("tite", '', dueDate)
+    project.addTask(todoItems, "IAS", todo.getItems()[1]['id'])
+    project.addTask(todoItems, "IAS", todo.getItems()[2]['id'])
+    project.addTask(todoItems, "STS", todo.getItems()[0]['id'])
+    console.log(project.getProjects());
+    project.removeTask("IAS", todo.getItems()[2]['id']);        
+    console.log(project.getProjects());
+    
+    
+
+    // project.addTask("STS", "any", "any")
+    // console.log(todo.getItems());
+    // project.addTask(todo.getItems());
+    
 
 
     return{
         updateDisplay,
     }
-
-
+    
 }
