@@ -1,4 +1,4 @@
-import { endOfToday } from "date-fns";
+import { endOfToday, format } from "date-fns";
 import { todoList, todoProjects } from "./todo.js";
 
 export function ScreenDisplay(){
@@ -27,7 +27,10 @@ export function ScreenDisplay(){
     todo.addTodo('Task 3', '', dueDate);
     //--
 
+    const dueDateSetDefault = document.querySelector('#dueDate');
+    dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
 
+    
     const displayScreen = () =>{
         updateTaskDisplay();
         displayProjects();
