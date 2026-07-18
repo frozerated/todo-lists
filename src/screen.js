@@ -40,7 +40,6 @@ export function ScreenDisplay(){
         taskDisplay.textContent = "";
 
         console.log(todoItems);
-        
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
             itemContainer.classList = 'itemContainer';
@@ -53,6 +52,7 @@ export function ScreenDisplay(){
 
             title.addEventListener('click', (event)=>{
                 openTaskDetails(event.target.id)
+           
             })
 
             itemContainer.appendChild(title);
@@ -96,6 +96,7 @@ export function ScreenDisplay(){
         const dueDate = document.createElement('input')
         dueDate.type = 'datetime-local'
         dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
+        dueDate.id = 'dueDate'
         taskDetailForm.appendChild(dueDate)
 
 
@@ -147,12 +148,15 @@ export function ScreenDisplay(){
 
         const description = document.createElement('textarea');
         description.value = task['description'];
+        description.id = 'description'
         taskDetailForm.appendChild(description)
 
         
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Save';
-        saveButton.id = 'updateTask'
+        saveButton.addEventListener('click', event =>{
+            updateTaskDetails(taskID)
+        })
         
 
 
@@ -164,6 +168,15 @@ export function ScreenDisplay(){
         taskDetailModal.showModal();
     }
 
+    const updateTaskDetails = (taskID, ) =>{
+        const updateForm = document.querySelector('#task-update-detail')
+        const title = updateForm.querySelector('#title').value
+        const dueDate = updateForm.querySelector('#dueDate').value;
+        const project = updateForm.querySelector('#projectInput')
+        const priority = updateForm.querySelector('#priorityInput').value
+        const description = updateForm.querySelector('#description').value
+        todo.updateTask(taskID, title, dueDate, project, priority, description);
+    }
 
     const displayProjects = () => {
         projectDisplay.textContent = ""
@@ -178,9 +191,6 @@ export function ScreenDisplay(){
         }
     }
 
-    const updateTaskDetails = () =>{
-        
-    }
 
 
     addTaskButton.addEventListener('click', (event)=>{
