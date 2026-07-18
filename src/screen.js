@@ -38,8 +38,6 @@ export function ScreenDisplay(){
     
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
-
-        console.log(todoItems);
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
             itemContainer.classList = 'itemContainer';
@@ -52,7 +50,6 @@ export function ScreenDisplay(){
 
             title.addEventListener('click', (event)=>{
                 openTaskDetails(event.target.id)
-           
             })
 
             itemContainer.appendChild(title);
@@ -81,11 +78,14 @@ export function ScreenDisplay(){
     }
 
     const openTaskDetails = (taskID) => {
+      
         const task = todo.getTask(taskID)
-
+   
+        
         const allTaskContainer = document.querySelector('.main')
         const taskDetailModal = document.createElement('dialog');
         const taskDetailForm = document.createElement('form');
+
         taskDetailForm.id = 'task-update-detail'
         
         const taskName = document.createElement('input');
@@ -154,27 +154,34 @@ export function ScreenDisplay(){
         
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Save';
+        saveButton.type = 'submit';
         saveButton.addEventListener('click', event =>{
+            event.preventDefault();
             updateTaskDetails(taskID)
+                
+            taskDetailForm.textContent ='';
+            taskDetailModal.textContent = '';
+            taskDetailModal.close()
+            updateTaskDisplay();
         })
         
 
-
-
-
+        taskDetailForm.appendChild(saveButton)
         taskDetailModal.appendChild(taskDetailForm)
-        taskDetailModal.appendChild(saveButton)
         allTaskContainer.appendChild(taskDetailModal)
         taskDetailModal.showModal();
     }
 
-    const updateTaskDetails = (taskID, ) =>{
+    const updateTaskDetails = (taskID ) =>{
         const updateForm = document.querySelector('#task-update-detail')
         const title = updateForm.querySelector('#title').value
         const dueDate = updateForm.querySelector('#dueDate').value;
         const project = updateForm.querySelector('#projectInput')
         const priority = updateForm.querySelector('#priorityInput').value
         const description = updateForm.querySelector('#description').value
+
+        
+        
         todo.updateTask(taskID, title, dueDate, project, priority, description);
     }
 
