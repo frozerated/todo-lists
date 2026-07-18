@@ -48,6 +48,14 @@ function todoList() {
         });
     }
 
+    const getTask = (taskID) => {
+        for(const task of todoItems){
+            if(task['id'] == taskID){
+                return task;
+            }
+        }
+    }
+
 
     return {
         getItems,
@@ -56,6 +64,7 @@ function todoList() {
         getCompleted,
         changePriority,
         removeItem,
+        getTask,
     }
 }
 
