@@ -166,6 +166,8 @@ export function ScreenDisplay(){
             taskDetailForm.textContent ='';
             taskDetailModal.textContent = '';
             taskDetailModal.close()
+            console.log(task);
+            
             updateTaskDisplay();
         })
         
@@ -180,7 +182,7 @@ export function ScreenDisplay(){
         const updateForm = document.querySelector('#task-update-detail')
         const title = updateForm.querySelector('#title').value
         const dueDate = updateForm.querySelector('#dueDate').value;
-        const project = updateForm.querySelector('#projectInput')
+        const project = updateForm.querySelector('#projectInput').value
         const priority = updateForm.querySelector('#priorityInput').value
         const description = updateForm.querySelector('#description').value
 
