@@ -99,6 +99,8 @@ function todoProjects(){
         projectList.push(projectItem(title));
     }
 
+    addProject('default')
+
 
     const addTask = (todoItems, projectName, taskID) => {
     
