@@ -26,7 +26,7 @@ export function ScreenDisplay(){
     const dueDateSetDefault = document.querySelector('#dueDate');
     dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
 
-    
+
     const displayScreen = () =>{
         updateTaskDisplay();
         displayProjects();
@@ -196,6 +196,17 @@ export function ScreenDisplay(){
             projectDisplay.appendChild(projectName);
 
         }
+
+        const projectOption = taskForm.querySelector('#project')
+         projectOption.textContent = '';
+        for(const item of projectItems){
+           
+            const option = document.createElement('option');
+            option.value = item['projectName'];
+            option.textContent = item['projectName']
+            projectOption.appendChild(option);
+        }
+
     }
 
 
@@ -223,6 +234,7 @@ export function ScreenDisplay(){
         if(!dueDate) dueDate = endOfToday();
         
         todo.addTodo(title, desc, dueDate, project, priority)
+
         updateTaskDisplay();
 
     }
