@@ -166,7 +166,7 @@ export function ScreenDisplay(){
             taskDetailForm.textContent ='';
             taskDetailModal.textContent = '';
             taskDetailModal.close()
-            console.log(task);
+        
             
             updateTaskDisplay();
         })
@@ -194,7 +194,7 @@ export function ScreenDisplay(){
     const displayProjects = () => {
         projectDisplay.textContent = ""
         for(const item of projectItems){
-            console.log(item['projectName']);
+
                 
             const projectName = document.createElement('button');
             projectName.textContent = '# ' + item['projectName'];
@@ -258,12 +258,6 @@ export function ScreenDisplay(){
     
         todo.markComplete(event.target.id);
         updateTaskDisplay();
-        console.log("---- Todo After: ");
-        
-        console.log(todo.getItems());
-        console.log("---- Completed : ");
-        
-        console.log(todo.getCompleted());
         
         
     
@@ -277,27 +271,13 @@ export function ScreenDisplay(){
     project.addTask(todoItems, "IAS", todo.getItems()[1]['id'])
     project.addTask(todoItems, "IAS", todo.getItems()[2]['id'])
     project.addTask(todoItems, "STS", todo.getItems()[0]['id'])
-    console.log(project.getProjects());
+
     project.removeTask("IAS", todo.getItems()[2]['id']);        
-    console.log(project.getProjects());
     
     
-
-    // project.addTask("STS", "any", "any")
-    // console.log(todo.getItems());
-    // project.addTask(todo.getItems());
-    
-
 
     return{
         displayScreen,
     }
     
 }
-//To add:
-// Add to project upon creation
-//position of adding to project in default project (layout)
-//completeList from todo migrate to project
-
-
-//each task has its own modal which includes all info and editable

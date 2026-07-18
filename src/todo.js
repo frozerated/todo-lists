@@ -6,11 +6,9 @@ import { format, endOfToday} from "date-fns";
 
 function todoList() {
     let todoItems = [];
-    let completedItems = [];
 
 
     const getItems = () => todoItems;
-    const getCompleted = () => completedItems;
 
     const addTodo = (title, description, dueDate, project, priority) => {
         todoItems.push(todoItem(title, description, dueDate, project, priority,))
@@ -41,30 +39,7 @@ function todoList() {
                 
             }
         }
-
-        console.log(todoItems);
         
-    }
-
-
-    const changePriority = (title, newPriority) => {
-        todoItems.forEach((item, index) => {
-            if (item['title'] == title) {
-                item['priority'] = newPriority;
-
-            }
-
-        });
-
-    }
-
-    const removeItem = (title) =>{
-        todoItems.forEach((item, index)=>{
-            if(item['title'] == title){
-                todoItems.splice(index, 1)
-            }
-
-        });
     }
 
     const getTask = (taskID) => {
@@ -82,9 +57,6 @@ function todoList() {
         getItems,
         addTodo,
         markComplete,
-        getCompleted,
-        changePriority,
-        removeItem,
         getTask,
         updateTask,
     }
