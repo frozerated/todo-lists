@@ -38,14 +38,23 @@ export function ScreenDisplay(){
     
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
+
+        console.log(todoItems);
+        
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
             itemContainer.classList = 'itemContainer';
             
     
-            const title = document.createElement('p');
+            const title = document.createElement('button');
             title.classList = 'title';
             title.textContent = element['title'];
+            title.id = element['id'];
+
+            title.addEventListener('click', (event)=>{
+                openTaskDetails(event.target.id)
+            })
+
             itemContainer.appendChild(title);
             
             const dueDate = document.createElement('p');
@@ -54,7 +63,9 @@ export function ScreenDisplay(){
             itemContainer.appendChild(dueDate);
     
             const completeButton = document.createElement('button');
+            completeButton.textContent = "Done"
             completeButton.classList = 'completeButton';
+    
             completeButton.id = element['id']
             completeButton.addEventListener('click', markComplete)
             itemContainer.appendChild(completeButton);
@@ -67,6 +78,90 @@ export function ScreenDisplay(){
         
         
         
+    }
+
+    const openTaskDetails = (taskID) => {
+        const task = todo.getTask(taskID)
+
+        const allTaskContainer = document.querySelector('.main')
+        const taskDetailModal = document.createElement('dialog');
+        const taskDetailForm = document.createElement('form');
+        taskDetailForm.id = 'task-update-detail'
+        
+        const taskName = document.createElement('input');
+        taskName.value = task['title']
+        taskName.id = 'title'
+        taskDetailForm.appendChild(taskName);
+
+        const dueDate = document.createElement('input')
+        dueDate.type = 'datetime-local'
+        dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
+        taskDetailForm.appendChild(dueDate)
+
+
+        
+        const project = document.createElement("select");
+        project.id = "projectInput";
+
+        for(const item of projectItems){
+            const option = document.createElement('option');
+            option.value = item['projectName'];
+            option.textContent = item['projectName']
+
+            if (option.value == task['project']) {
+                option.selected = true;
+                
+            }
+            project.appendChild(option);
+        }
+
+        
+        const projectLabel = document.createElement('label')
+        projectLabel.htmlFor ='projectInput';
+        projectLabel.textContent = 'Project: '
+        taskDetailForm.appendChild(projectLabel);
+        taskDetailForm.appendChild(project)
+
+
+        const priorityLabel = document.createElement('label')
+        priorityLabel.htmlFor ='priorityInput';
+        priorityLabel.textContent = 'Project: '
+        taskDetailForm.appendChild(priorityLabel);
+
+
+        const selectPriority = document.createElement('select')
+        selectPriority.id = 'priorityInput'
+
+        for(const priority of ['None', 'Critical', 'Significant', 'Minor']){
+            const option = document.createElement('option');
+            option.value = priority;
+            option.textContent = priority
+
+            if(option.value == task['priority']){
+                option.selected = true;
+            }
+            selectPriority.appendChild(option)
+        }
+
+        taskDetailForm.appendChild(selectPriority);
+
+        const description = document.createElement('textarea');
+        description.value = task['description'];
+        taskDetailForm.appendChild(description)
+
+        
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Save';
+        saveButton.id = 'updateTask'
+        
+
+
+
+
+        taskDetailModal.appendChild(taskDetailForm)
+        taskDetailModal.appendChild(saveButton)
+        allTaskContainer.appendChild(taskDetailModal)
+        taskDetailModal.showModal();
     }
 
 
@@ -83,9 +178,14 @@ export function ScreenDisplay(){
         }
     }
 
+    const updateTaskDetails = () =>{
+        
+    }
+
 
     addTaskButton.addEventListener('click', (event)=>{
         addTask();
+     
     });
 
     addProjectButton.addEventListener('click', (event) =>{
@@ -159,3 +259,10 @@ export function ScreenDisplay(){
     }
     
 }
+//To add:
+// Add to project upon creation
+//position of adding to project in default project (layout)
+//completeList from todo migrate to project
+
+
+//each task has its own modal which includes all info and editable
