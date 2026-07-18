@@ -126,19 +126,23 @@ export function ScreenDisplay(){
 
         const priorityLabel = document.createElement('label')
         priorityLabel.htmlFor ='priorityInput';
-        priorityLabel.textContent = 'Project: '
+        priorityLabel.textContent = 'Priority: '
         taskDetailForm.appendChild(priorityLabel);
 
 
         const selectPriority = document.createElement('select')
         selectPriority.id = 'priorityInput'
 
+
+        
+        
         for(const priority of ['None', 'Critical', 'Significant', 'Minor']){
             const option = document.createElement('option');
             option.value = priority;
             option.textContent = priority
 
-            if(option.value == task['priority']){
+
+            if(option.value.toLowerCase() == task['priority']){
                 option.selected = true;
             }
             selectPriority.appendChild(option)
