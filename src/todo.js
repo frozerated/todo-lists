@@ -158,7 +158,7 @@ function projectItem(title){
 }
 
 
-function todoItem(title, description = "", dueDate, project='default', priority = 'none') {
+function todoItem(title, description = "", dueDate, project='default', priority='minor') {
 
     dueDate = new Date(dueDate);
     const id = crypto.randomUUID().slice(1,15);

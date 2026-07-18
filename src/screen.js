@@ -136,7 +136,7 @@ export function ScreenDisplay(){
 
         
         
-        for(const priority of ['None', 'Critical', 'Significant', 'Minor']){
+        for(const priority of ['Critical', 'Significant', 'Minor']){
             const option = document.createElement('option');
             option.value = priority;
             option.textContent = priority
