@@ -28,6 +28,25 @@ function todoList() {
         });
     }
 
+    const updateTask = (taskID, title,  dueDate, project, priority, description="") =>{
+        for(const task of todoItems){
+            if (task['id'] == taskID){
+
+    
+                task['title'] = title;
+                task['dueDate'] = dueDate;
+                task['project'] = project;
+                task['priority'] = priority;
+                task['description'] = description;
+                
+            }
+        }
+
+        console.log(todoItems);
+        
+    }
+
+
     const changePriority = (title, newPriority) => {
         todoItems.forEach((item, index) => {
             if (item['title'] == title) {
@@ -57,6 +76,8 @@ function todoList() {
     }
 
 
+
+
     return {
         getItems,
         addTodo,
@@ -65,6 +86,7 @@ function todoList() {
         changePriority,
         removeItem,
         getTask,
+        updateTask,
     }
 }
 
@@ -86,6 +108,7 @@ function todoProjects(){
                 for(const task of todoItems){
                     if(task["id"] == taskID){
                         projectList[index]["projectTodo"].push(task);
+                        task['project'] = projectName;
                         break projectLoop;
                     }
                 }
@@ -133,7 +156,7 @@ function projectItem(title){
 }
 
 
-function todoItem(title, description = "", dueDate, project = 'default', priority = 'none') {
+function todoItem(title, description = "", dueDate, project='default', priority = 'none') {
 
     dueDate = new Date(dueDate);
     const id = crypto.randomUUID().slice(1,15);
