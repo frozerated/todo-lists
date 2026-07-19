@@ -48,8 +48,10 @@ export function Todo() {
 
     const removeTask = (task) => {
         const projectFolder = project.find(project => project.projectName == task.project)
+        const defaultProject = project.find(project => project.projectName == 'default');
         const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
         projectFolder.projectTodo.splice(taskIndex, 1);
+        defaultProject.projectTodo.splice(taskIndex, 1);
     }
 
     const moveTaskProject = (newProject, task) => {
