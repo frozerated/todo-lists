@@ -31,7 +31,7 @@ export function ScreenDisplay() {
     const updateTaskDisplay = () => {
         console.log(todo.getProjectFolder('default').projectTodo);
         console.log(todo.getProjects());
-        
+
         displayTasks(taskDisplay, todo.getProjectFolder('default').projectTodo)
 
     }
@@ -49,7 +49,7 @@ export function ScreenDisplay() {
 
             title.addEventListener('click', (event) => {
                 openTaskDetails(event.target.id)
-                
+
             })
 
             itemContainer.appendChild(title);
@@ -76,20 +76,20 @@ export function ScreenDisplay() {
 
 
     }
-
+    
     const openTaskDetails = (taskID) => {
-
-        const task = todo.getTask(taskID)
-
-
         const allTaskContainer = document.querySelector('.main')
         const taskDetailModal = document.createElement('dialog');
         const taskDetailForm = document.createElement('form');
+        const task = todo.getTask(taskID)
+        console.log(taskID);
 
+        taskDetailForm.reset();
         taskDetailForm.id = 'task-update-detail'
 
+
         const taskName = document.createElement('input');
-        taskName.value = task['title']
+        taskName.value = task['title'];
         taskName.id = 'title'
         taskDetailForm.appendChild(taskName);
 
@@ -98,7 +98,6 @@ export function ScreenDisplay() {
         dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
         dueDate.id = 'dueDate'
         taskDetailForm.appendChild(dueDate)
-
 
 
         const project = document.createElement("select");
@@ -134,8 +133,6 @@ export function ScreenDisplay() {
         selectPriority.id = 'priorityInput'
 
 
-
-
         for (const priority of ['Critical', 'Significant', 'Minor']) {
             const option = document.createElement('option');
             option.value = priority;
@@ -162,16 +159,16 @@ export function ScreenDisplay() {
         saveButton.addEventListener('click', event => {
             event.preventDefault();
             updateTaskDetails(taskID)
-
-            taskDetailForm.textContent = '';
-            taskDetailModal.textContent = '';
-            taskDetailModal.close()
-            console.log(todo.getProjects());
-
-
             updateTaskDisplay();
+            taskDetailModal.close()
+            taskDetailModal.remove();
+            taskDetailModal.remove();
+
         })
 
+        taskDetailModal.addEventListener('close', () => {
+            taskDetailModal.remove();
+        });
 
         taskDetailForm.appendChild(saveButton)
         taskDetailModal.appendChild(taskDetailForm)
@@ -216,7 +213,7 @@ export function ScreenDisplay() {
 
         const projectOption = taskForm.querySelector('#project')
         projectOption.textContent = '';
-        
+
         for (const item of todo.getProjects()) {
 
             const option = document.createElement('option');
@@ -287,14 +284,14 @@ export function ScreenDisplay() {
     todo.addProject("IAS");
 
 
-        // -- for testing purposes
+    // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
 
     todo.addTask('Task 1', '', dueDate, "STS");
     todo.addTask('Task 2', '', dueDate);
     todo.addTask('Task 3', '', dueDate);
     console.log(todo.getProjects());
-    
+
     //--
     // todo.addTodo("tite", '', dueDate)
     // project.addTask(todoItems, "IAS", todo.getItems()[1])
