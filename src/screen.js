@@ -259,7 +259,7 @@ export function ScreenDisplay() {
 
         if (!dueDate) dueDate = endOfToday();
 
-        todo.addTodo(title, desc, dueDate, project, priority)
+        todo.addTask(title, desc, dueDate, project, priority)
 
         updateTaskDisplay();
 
