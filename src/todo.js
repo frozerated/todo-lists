@@ -36,7 +36,7 @@ function todoList() {
     }
 
     const getTask = (taskID) => {
-        return todoItems.find(task => task.id == taskID);
+         return todoItems.find(task => task.id == taskID);
     }
 
 
@@ -58,6 +58,10 @@ function todoProjects() {
         projectList.push(projectItem(title));
     }
 
+    const getProjectFolder = (projectName) => {
+        return projectList.find(project => project.projectName == projectName)
+    }
+
     const addTask = (todoItems, projectName, task) => {
         const projectFolder = projectList.find(project => project.projectName == projectName);
         const taskItem = todoItems.find(taskItem => taskItem == task);
@@ -71,7 +75,11 @@ function todoProjects() {
 
     }
 
-    const removeTask = (projectName, taskID) => {
+    const removeTask = (task) => {
+        console.log(task);
+        
+        // const projectFolder = projectList.find(project => project.projectName == task.project);
+        // console.log(projectFolder)
 
         let index = 0;
         projectLoop: for (const project of projectList) {
@@ -95,7 +103,8 @@ function todoProjects() {
         getProjects,
         addProject,
         addTask,
-        removeTask
+        removeTask,
+        getProjectFolder,
     }
 }
 
