@@ -57,16 +57,12 @@ export function Todo() {
             const currentProject = getProjectFolder(task.project);
             const taskIndex = currentProject.projectTodo.findIndex(item => item.id == task.id);    
             const taskItem = currentProject.projectTodo.splice(taskIndex, 1);
-            const projectDestination = getProjectFolder(newProject);
-            projectDestination.projectTodo.push(taskItem)
-            
-        }
+            if(newProject != 'default'){
+                const projectDestination = getProjectFolder(newProject);
+                projectDestination.projectTodo.push(taskItem[0])
 
-        // currentProject.projectTodo.splice()
-        // 
-        //hanapin ung current project
-        //alisinung tasksacurrent project
-        //lagay sa bagng project
+            }
+        }
     }
 
 
