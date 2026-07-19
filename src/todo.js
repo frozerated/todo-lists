@@ -33,6 +33,7 @@ export function Todo() {
     const updateTask = (taskID, title, dueDate, project, priority, description = "") => {
 
         const task = getTask(taskID);
+        moveTaskProject(project, task)
         if (task) {
             Object.assign(task, {
                 title,
@@ -41,6 +42,7 @@ export function Todo() {
                 priority,
                 description,
             })
+            
         }
     }
 
@@ -50,6 +52,22 @@ export function Todo() {
         projectFolder.projectTodo.splice(taskIndex, 1);
     }
 
+    const moveTaskProject = (newProject, task) => {
+        if(task.project != 'default'){
+            const currentProject = getProjectFolder(task.project);
+            const taskIndex = currentProject.projectTodo.findIndex(item => item.id == task.id);    
+            const taskItem = currentProject.projectTodo.splice(taskIndex, 1);
+            const projectDestination = getProjectFolder(newProject);
+            projectDestination.projectTodo.push(taskItem)
+            
+        }
+
+        // currentProject.projectTodo.splice()
+        // 
+        //hanapin ung current project
+        //alisinung tasksacurrent project
+        //lagay sa bagng project
+    }
 
 
     return {
