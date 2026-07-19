@@ -193,8 +193,12 @@ export function ScreenDisplay(){
 
     const displayProjects = () => {
         projectDisplay.textContent = ""
+        const showAllTask = document.createElement('button');
+        showAllTask.textContent = 'All Task'
+        showAllTask.classList = 'button project'
+        showAllTask.addEventListener('click', event => displayTasks(taskDisplay, todoItems))
+        projectDisplay.appendChild(showAllTask);
         for(const item of projectItems){
-
                 
             const projectName = document.createElement('button');
             projectName.textContent = '# ' + item['projectName'];
