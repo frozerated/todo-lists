@@ -75,27 +75,10 @@ function todoProjects() {
 
     }
 
-    const removeTask = (task) => {
-        console.log(task);
-        
-        // const projectFolder = projectList.find(project => project.projectName == task.project);
-        // console.log(projectFolder)
-
-        let index = 0;
-        projectLoop: for (const project of projectList) {
-            if (project['projectName'] == projectName) {
-                const projectTask = projectList[index]['projectTodo'];
-
-                for (const task of projectTask) {
-                    let taskIndex = 0;
-                    if (task['id'] == taskID) {
-                        projectTask.splice(taskIndex, 1);
-                        break projectLoop;
-                    }
-                }
-            }
-            index++
-        }
+    const removeTask = (task) => {        
+        const projectFolder = projectList.find(project => project.projectName == task.project)
+        const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
+        projectFolder.projectTodo.splice(taskIndex, 1);
     }
 
 
