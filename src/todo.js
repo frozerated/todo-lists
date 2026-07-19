@@ -7,7 +7,6 @@ import { format, endOfToday} from "date-fns";
 function todoList() {
     let todoItems = [];
 
-
     const getItems = () => todoItems;
 
     const addTodo = (title, description, dueDate, project, priority) => {
@@ -16,41 +15,29 @@ function todoList() {
 
 
     const markComplete = (id) => {
-        todoItems.forEach((item, index) => {
-            if (item['id'] == id) {
-                const completed = todoItems.splice(index, 1)
+        const completedItem =  todoItems.findIndex(task => task.id == id);
+        todoItems.splice(completedItem, 1)
 
-                completedItems.push(completed[0]);
-            }
-
-        });
     }
 
     const updateTask = (taskID, title,  dueDate, project, priority, description="") =>{
-        for(const task of todoItems){
-            if (task['id'] == taskID){
 
-    
-                task['title'] = title;
-                task['dueDate'] = dueDate;
-                task['project'] = project;
-                task['priority'] = priority;
-                task['description'] = description;
-                
-            }
+        const updateTask = todoItems.find(task => task.id === taskID)
+``
+        if(updateTask){
+            Object.assign(updateTask,{
+                title,
+                dueDate,
+                project,
+                priority,
+                description,
+            })
         }
-        
     }
 
     const getTask = (taskID) => {
-        for(const task of todoItems){
-            if(task['id'] == taskID){
-                return task;
-            }
-        }
+        return todoItems.find(task => task.id== taskID);
     }
-
-
 
 
     return {
@@ -70,7 +57,7 @@ function todoProjects(){
     const addProject = (title) => {
         projectList.push(projectItem(title));
     }
-    
+
     const addTask = (todoItems, projectName, taskID) => {
     
         let index = 0; //current project
