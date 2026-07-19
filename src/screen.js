@@ -1,5 +1,6 @@
 import { endOfToday, format } from "date-fns";
 import { todoList, todoProjects } from "./todo.js";
+import { filterProjectTask } from "./projectDisplay.js";
 
 export function ScreenDisplay(){
     const todo = todoList();
@@ -40,8 +41,7 @@ export function ScreenDisplay(){
         taskDisplay.textContent = "";
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
-            itemContainer.classList = 'itemContainer';
-            
+            itemContainer.classList = 'itemContainer';   
     
             const title = document.createElement('button');
             title.classList = 'title';
@@ -200,8 +200,12 @@ export function ScreenDisplay(){
             projectName.textContent = '# ' + item['projectName'];
             projectName.classList = "projectName";
             projectDisplay.appendChild(projectName);
+            projectName.addEventListener('click', (event)=>{
+                taskDisplay.textContent ="";
+                displayTasks(taskDisplay, filterProjectTask(item['projectName'], todoItems))
+            })
 
-        }
+            }
 
         const projectOption = taskForm.querySelector('#project')
          projectOption.textContent = '';
