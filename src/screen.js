@@ -1,40 +1,48 @@
 import { endOfToday, format } from "date-fns";
-import { todoList, todoProjects } from "./todo.js";
+import { todoList, todoProjects, Todo } from "./todo.js";
 import { filterProjectTask } from "./projectDisplay.js";
 
+
+
 export function ScreenDisplay() {
-    const todo = todoList();
-    const todoItems = todo.getItems();
-    const project = todoProjects();
-    const projectItems = project.getProjects();
+    // const todo = todoList();
+    const todo = Todo();
+    // const todoItems = todo.getItems();
+    // const project = todoProjects();
+    // const projectItems = project.getProjects();
 
     const taskDisplay = document.querySelector('.tasksContainer');
-    const projectDisplay = document.querySelector('.projectContainer');
+    // const projectDisplay = document.querySelector('.projectContainer');
 
     const addTaskButton = document.querySelector('#addTask');
-    const taskForm = document.querySelector('#task-form')
+    // const taskForm = document.querySelector('#task-form')
 
     const addProjectButton = document.querySelector("#addProject");
 
     // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
 
-    todo.addTodo('Task 1', '', dueDate);
-    todo.addTodo('Task 2', '', dueDate);
-    todo.addTodo('Task 3', '', dueDate);
+    todo.addTask('Task 1', '', dueDate);
+    todo.addTask('Task 2', '', dueDate);
+    todo.addTask('Task 3', '', dueDate);
+    console.log(todo.getProjects());
+    
     //--
 
-    const dueDateSetDefault = document.querySelector('#dueDate');
-    dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
+    // const dueDateSetDefault = document.querySelector('#dueDate');
+    // dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
 
 
     const displayScreen = () => {
         updateTaskDisplay();
-        displayProjects();
+        // displayProjects();
     }
 
     const updateTaskDisplay = () => {
-        displayTasks(taskDisplay, todoItems);
+        console.log(todo.getProjectFolder('default').projectTodo);
+        
+        displayTasks(taskDisplay, todo.getProjectFolder('default').projectTodo)
+        // displayTasks(taskDisplay, todoItems);
     }
 
     const displayTasks = (displayArea, itemList) => {
@@ -77,154 +85,155 @@ export function ScreenDisplay() {
 
     }
 
-    const openTaskDetails = (taskID) => {
+    // const openTaskDetails = (taskID) => {
 
-        const task = todo.getTask(taskID)
-
-
-        const allTaskContainer = document.querySelector('.main')
-        const taskDetailModal = document.createElement('dialog');
-        const taskDetailForm = document.createElement('form');
-
-        taskDetailForm.id = 'task-update-detail'
-
-        const taskName = document.createElement('input');
-        taskName.value = task['title']
-        taskName.id = 'title'
-        taskDetailForm.appendChild(taskName);
-
-        const dueDate = document.createElement('input')
-        dueDate.type = 'datetime-local'
-        dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
-        dueDate.id = 'dueDate'
-        taskDetailForm.appendChild(dueDate)
+    //     const task = todo.getTask(taskID)
 
 
+    //     const allTaskContainer = document.querySelector('.main')
+    //     const taskDetailModal = document.createElement('dialog');
+    //     const taskDetailForm = document.createElement('form');
 
-        const project = document.createElement("select");
-        project.id = "projectInput";
+    //     taskDetailForm.id = 'task-update-detail'
 
-        for (const item of projectItems) {
-            const option = document.createElement('option');
-            option.value = item['projectName'];
-            option.textContent = item['projectName']
+    //     const taskName = document.createElement('input');
+    //     taskName.value = task['title']
+    //     taskName.id = 'title'
+    //     taskDetailForm.appendChild(taskName);
 
-            if (option.value == task['project']) {
-                option.selected = true;
-
-            }
-            project.appendChild(option);
-        }
-
-
-        const projectLabel = document.createElement('label')
-        projectLabel.htmlFor = 'projectInput';
-        projectLabel.textContent = 'Project: '
-        taskDetailForm.appendChild(projectLabel);
-        taskDetailForm.appendChild(project)
-
-
-        const priorityLabel = document.createElement('label')
-        priorityLabel.htmlFor = 'priorityInput';
-        priorityLabel.textContent = 'Priority: '
-        taskDetailForm.appendChild(priorityLabel);
-
-
-        const selectPriority = document.createElement('select')
-        selectPriority.id = 'priorityInput'
+    //     const dueDate = document.createElement('input')
+    //     dueDate.type = 'datetime-local'
+    //     dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
+    //     dueDate.id = 'dueDate'
+    //     taskDetailForm.appendChild(dueDate)
 
 
 
+    //     const project = document.createElement("select");
+    //     project.id = "projectInput";
 
-        for (const priority of ['Critical', 'Significant', 'Minor']) {
-            const option = document.createElement('option');
-            option.value = priority;
-            option.textContent = priority
+    //     for (const item of projectItems) {
+    //         const option = document.createElement('option');
+    //         option.value = item['projectName'];
+    //         option.textContent = item['projectName']
 
+    //         if (option.value == task['project']) {
+    //             option.selected = true;
 
-            if (option.value.toLowerCase() == task['priority']) {
-                option.selected = true;
-            }
-            selectPriority.appendChild(option)
-        }
-
-        taskDetailForm.appendChild(selectPriority);
-
-        const description = document.createElement('textarea');
-        description.value = task['description'];
-        description.id = 'description'
-        taskDetailForm.appendChild(description)
+    //         }
+    //         project.appendChild(option);
+    //     }
 
 
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Save';
-        saveButton.type = 'submit';
-        saveButton.addEventListener('click', event => {
-            event.preventDefault();
-            updateTaskDetails(taskID)
-
-            taskDetailForm.textContent = '';
-            taskDetailModal.textContent = '';
-            taskDetailModal.close()
-            console.log(projectItems);
+    //     const projectLabel = document.createElement('label')
+    //     projectLabel.htmlFor = 'projectInput';
+    //     projectLabel.textContent = 'Project: '
+    //     taskDetailForm.appendChild(projectLabel);
+    //     taskDetailForm.appendChild(project)
 
 
-            updateTaskDisplay();
-        })
+    //     const priorityLabel = document.createElement('label')
+    //     priorityLabel.htmlFor = 'priorityInput';
+    //     priorityLabel.textContent = 'Priority: '
+    //     taskDetailForm.appendChild(priorityLabel);
 
 
-        taskDetailForm.appendChild(saveButton)
-        taskDetailModal.appendChild(taskDetailForm)
-        allTaskContainer.appendChild(taskDetailModal)
-        taskDetailModal.showModal();
-    }
-
-    const updateTaskDetails = (taskID) => {
-        const updateForm = document.querySelector('#task-update-detail')
-        const title = updateForm.querySelector('#title').value
-        const dueDate = updateForm.querySelector('#dueDate').value;
-        const project = updateForm.querySelector('#projectInput').value
-        const priority = updateForm.querySelector('#priorityInput').value
-        const description = updateForm.querySelector('#description').value
+    //     const selectPriority = document.createElement('select')
+    //     selectPriority.id = 'priorityInput'
 
 
 
-        todo.updateTask(taskID, title, dueDate, project, priority, description);
-    }
 
-    const displayProjects = () => {
-        projectDisplay.textContent = ""
-        const showAllTask = document.createElement('button');
-        showAllTask.textContent = 'All Task'
-        showAllTask.classList = 'button project'
-        showAllTask.addEventListener('click', event => displayTasks(taskDisplay, todoItems))
-        projectDisplay.appendChild(showAllTask);
+    //     for (const priority of ['Critical', 'Significant', 'Minor']) {
+    //         const option = document.createElement('option');
+    //         option.value = priority;
+    //         option.textContent = priority
 
-        for (const item of projectItems) {
 
-            const projectName = document.createElement('button');
-            projectName.textContent = '# ' + item['projectName'];
-            projectName.classList = "projectName";
-            projectName.id = item.projectName;
-            projectName.addEventListener('click', (event) => {
-                const projectTodo = project.getProjectFolder(event.target.id).projectTodo
-                displayTasks(taskDisplay, projectTodo)
-            })
-            
-            projectDisplay.appendChild(projectName);
-        }
+    //         if (option.value.toLowerCase() == task['priority']) {
+    //             option.selected = true;
+    //         }
+    //         selectPriority.appendChild(option)
+    //     }
 
-        const projectOption = taskForm.querySelector('#project')
-        projectOption.textContent = '';
-        for (const item of projectItems) {
+    //     taskDetailForm.appendChild(selectPriority);
 
-            const option = document.createElement('option');
-            option.value = item['projectName'];
-            option.textContent = item['projectName']
-            projectOption.appendChild(option);
-        }
+    //     const description = document.createElement('textarea');
+    //     description.value = task['description'];
+    //     description.id = 'description'
+    //     taskDetailForm.appendChild(description)
 
-    }
+
+    //     const saveButton = document.createElement('button');
+    //     saveButton.textContent = 'Save';
+    //     saveButton.type = 'submit';
+    //     saveButton.addEventListener('click', event => {
+    //         event.preventDefault();
+    //         updateTaskDetails(taskID)
+
+    //         taskDetailForm.textContent = '';
+    //         taskDetailModal.textContent = '';
+    //         taskDetailModal.close()
+    //         console.log(projectItems);
+    //         project.updateTask
+
+
+    //         updateTaskDisplay();
+    //     })
+
+
+    //     taskDetailForm.appendChild(saveButton)
+    //     taskDetailModal.appendChild(taskDetailForm)
+    //     allTaskContainer.appendChild(taskDetailModal)
+    //     taskDetailModal.showModal();
+    // }
+
+    // const updateTaskDetails = (taskID) => {
+    //     const updateForm = document.querySelector('#task-update-detail')
+    //     const title = updateForm.querySelector('#title').value
+    //     const dueDate = updateForm.querySelector('#dueDate').value;
+    //     const project = updateForm.querySelector('#projectInput').value
+    //     const priority = updateForm.querySelector('#priorityInput').value
+    //     const description = updateForm.querySelector('#description').value
+
+
+
+    //     todo.updateTask(taskID, title, dueDate, project, priority, description);
+    // }
+
+    // const displayProjects = () => {
+    //     projectDisplay.textContent = ""
+    //     const showAllTask = document.createElement('button');
+    //     showAllTask.textContent = 'All Task'
+    //     showAllTask.classList = 'button project'
+    //     showAllTask.addEventListener('click', event => displayTasks(taskDisplay, todoItems))
+    //     projectDisplay.appendChild(showAllTask);
+
+    //     for (const item of projectItems) {
+
+    //         const projectName = document.createElement('button');
+    //         projectName.textContent = '# ' + item['projectName'];
+    //         projectName.classList = "projectName";
+    //         projectName.id = item.projectName;
+    //         projectName.addEventListener('click', (event) => {
+    //             const projectTodo = project.getProjectFolder(event.target.id).projectTodo
+    //             displayTasks(taskDisplay, projectTodo)
+    //         })
+
+    //         projectDisplay.appendChild(projectName);
+    //     }
+
+    //     const projectOption = taskForm.querySelector('#project')
+    //     projectOption.textContent = '';
+    //     for (const item of projectItems) {
+
+    //         const option = document.createElement('option');
+    //         option.value = item['projectName'];
+    //         option.textContent = item['projectName']
+    //         projectOption.appendChild(option);
+    //     }
+
+    // }
 
 
 
@@ -280,16 +289,16 @@ export function ScreenDisplay() {
 
 
     // Testing purposes
-    project.addProject("STS");
-    project.addProject("IAS");
-    todo.addTodo("tite", '', dueDate)
-    project.addTask(todoItems, "IAS", todo.getItems()[1])
-    project.addTask(todoItems, "IAS", todo.getItems()[2])
-    project.addTask(todoItems, "STS", todo.getItems()[0])
+    // project.addProject("STS");
+    // project.addProject("IAS");
+    // todo.addTodo("tite", '', dueDate)
+    // project.addTask(todoItems, "IAS", todo.getItems()[1])
+    // project.addTask(todoItems, "IAS", todo.getItems()[2])
+    // project.addTask(todoItems, "STS", todo.getItems()[0])
 
 
     // project.removeTask("IAS", todo.getItems()[2]['id']);        
-    console.log(projectItems);
+    // console.log(projectItems);
 
 
 
