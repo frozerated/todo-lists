@@ -7,8 +7,8 @@ import { filterProjectTask } from "./projectDisplay.js";
 export function ScreenDisplay() {
     const todo = Todo();
 
-
     const taskDisplay = document.querySelector('.tasksContainer');
+    taskDisplay.id = "default"
     const projectDisplay = document.querySelector('.projectContainer');
 
     const addTaskButton = document.querySelector('#addTask');
@@ -28,13 +28,16 @@ export function ScreenDisplay() {
         displayProjects();
     }
 
-    const updateTaskDisplay = () => {
-        console.log(todo.getProjectFolder('default').projectTodo);
-        console.log(todo.getProjects());
+    const updateTaskDisplay = (projectName="default") => {
+        console.log(projectName);
+        
 
-        displayTasks(taskDisplay, todo.getProjectFolder('default').projectTodo)
+        displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo)
 
     }
+
+    //if project has an ID
+    //
 
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
@@ -191,21 +194,17 @@ export function ScreenDisplay() {
 
     const displayProjects = () => {
         projectDisplay.textContent = ""
-        const showAllTask = document.createElement('button');
-        showAllTask.textContent = 'All Task'
-        showAllTask.classList = 'button project'
-        showAllTask.addEventListener('click', event => displayTasks(taskDisplay, todoItems))
-        projectDisplay.appendChild(showAllTask);
-
         for (const item of todo.getProjects()) {
 
             const projectName = document.createElement('button');
             projectName.textContent = '# ' + item['projectName'];
+            if(item.projectName == 'default') projectName.textContent = 'All Task'
             projectName.classList = "projectName";
             projectName.id = item.projectName;
             projectName.addEventListener('click', (event) => {
                 const projectTodo = todo.getProjectFolder(event.target.id).projectTodo
-                displayTasks(taskDisplay, projectTodo)
+                taskDisplay.id = item.projectName;
+                updateTaskDisplay(event.target.id)
             })
 
             projectDisplay.appendChild(projectName);
@@ -258,22 +257,14 @@ export function ScreenDisplay() {
         const projectName = document.querySelector("#projectName").value;
         const projectColor = document.querySelector("#projectColor").value;
 
-        project.addProject(projectName);
+        todo.addProject(projectName);
         displayProjects();
 
     }
 
     const markComplete = (event) => {
-
         todo.removeTask(todo.getTask(event.target.id));
-        // todo.markComplete(event.target.id);
-        // console.log(projectItems);
-        // console.log(todoItems);
-        updateTaskDisplay();
-
-
-
-
+        updateTaskDisplay(taskDisplay.id);
     }
 
 
@@ -289,19 +280,8 @@ export function ScreenDisplay() {
 
     todo.addTask('Task 1', '', dueDate, "STS");
     todo.addTask('Task 2', '', dueDate);
-    todo.addTask('Task 3', '', dueDate);
+    todo.addTask('Task 3', '', dueDate, 'IAS')
     console.log(todo.getProjects());
-
-    //--
-    // todo.addTodo("tite", '', dueDate)
-    // project.addTask(todoItems, "IAS", todo.getItems()[1])
-    // project.addTask(todoItems, "IAS", todo.getItems()[2])
-    // project.addTask(todoItems, "STS", todo.getItems()[0])
-
-
-    // project.removeTask("IAS", todo.getItems()[2]['id']);        
-    // console.log(projectItems);
-
 
 
 
