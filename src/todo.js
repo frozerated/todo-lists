@@ -70,10 +70,7 @@ function todoProjects(){
     const addProject = (title) => {
         projectList.push(projectItem(title));
     }
-
-    addProject('default')
-
-
+    
     const addTask = (todoItems, projectName, taskID) => {
     
         let index = 0; //current project
