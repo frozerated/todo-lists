@@ -24,11 +24,32 @@ export function Todo() {
         }
     }
 
-    const getTask = (taskID) =>{
+    const getTask = (taskID) => {
         // console.log(getProjectFolder('default'));
-        
+
         return getProjectFolder('default').projectTodo.find(task => task.id == taskID);
     }
+
+    const updateTask = (taskID, title, dueDate, project, priority, description = "") => {
+
+        const task = getTask(taskID);
+        if (task) {
+            Object.assign(task, {
+                title,
+                dueDate,
+                project,
+                priority,
+                description,
+            })
+        }
+    }
+
+    const removeTask = (task) => {
+        const projectFolder = project.find(project => project.projectName == task.project)
+        const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
+        projectFolder.projectTodo.splice(taskIndex, 1);
+    }
+
 
 
     return {
@@ -37,6 +58,8 @@ export function Todo() {
         getProjectFolder,
         addProject,
         getTask,
+        updateTask,
+        removeTask,
     }
 
 }
