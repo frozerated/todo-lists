@@ -1,8 +1,40 @@
-// Create list object
-//List attributes: title, description, dueDate, priority
-//Add lists to an array
-//An array of objects of lists
 import { format, endOfToday } from "date-fns";
+
+
+export function Todo() {
+    let project = [];
+
+    const getProjects = () => project;
+    const addProject = (title) => {
+        project.push(projectItem(title));
+    }
+    addProject('default');
+
+    const getProjectFolder = (projectName) => {
+        return project.find(project => project.projectName == projectName);
+    }
+
+    const addTask = (title, description, dueDate, projectName, priority) => {
+
+        const newTask = todoItem(title, description, dueDate, projectName, priority);
+
+        getProjectFolder('default').projectTodo.push(newTask);
+        if (projectName && projectName != 'default') {
+            getProjectFolder(projectName).projectTodo.push(newTask);
+        }
+    }
+
+
+    return {
+        addTask,
+        getProjects,
+        getProjectFolder,
+        addProject,
+    }
+
+}
+
+
 
 function todoList() {
     let todoItems = [];
@@ -36,7 +68,7 @@ function todoList() {
     }
 
     const getTask = (taskID) => {
-         return todoItems.find(task => task.id == taskID);
+        return todoItems.find(task => task.id == taskID);
     }
 
 
@@ -72,10 +104,12 @@ function todoProjects() {
     }
 
     const updateTask = (projectName, task) => {
+        // const projectFolder = projectList.find(project => project.projectName = projectName);
+
 
     }
 
-    const removeTask = (task) => {        
+    const removeTask = (task) => {
         const projectFolder = projectList.find(project => project.projectName == task.project)
         const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
         projectFolder.projectTodo.splice(taskIndex, 1);
@@ -88,6 +122,7 @@ function todoProjects() {
         addTask,
         removeTask,
         getProjectFolder,
+        updateTask,
     }
 }
 
