@@ -2,7 +2,7 @@
 //List attributes: title, description, dueDate, priority
 //Add lists to an array
 //An array of objects of lists
-import { format, endOfToday} from "date-fns";
+import { format, endOfToday } from "date-fns";
 
 function todoList() {
     let todoItems = [];
@@ -15,17 +15,17 @@ function todoList() {
 
 
     const markComplete = (id) => {
-        const completedItem =  todoItems.findIndex(task => task.id == id);
+        const completedItem = todoItems.findIndex(task => task.id == id);
         todoItems.splice(completedItem, 1)
 
     }
 
-    const updateTask = (taskID, title,  dueDate, project, priority, description="") =>{
+    const updateTask = (taskID, title, dueDate, project, priority, description = "") => {
 
         const updateTask = todoItems.find(task => task.id === taskID)
-``
-        if(updateTask){
-            Object.assign(updateTask,{
+
+        if (updateTask) {
+            Object.assign(updateTask, {
                 title,
                 dueDate,
                 project,
@@ -36,7 +36,7 @@ function todoList() {
     }
 
     const getTask = (taskID) => {
-        return todoItems.find(task => task.id== taskID);
+        return todoItems.find(task => task.id == taskID);
     }
 
 
@@ -49,7 +49,7 @@ function todoList() {
     }
 }
 
-function todoProjects(){
+function todoProjects() {
     let projectList = [];
 
     const getProjects = () => projectList;
@@ -58,34 +58,29 @@ function todoProjects(){
         projectList.push(projectItem(title));
     }
 
-    const addTask = (todoItems, projectName, taskID) => {
-    
-        let index = 0; //current project
-        projectLoop: for(const project of projectList){
-            if(project['projectName'] == projectName){
-                for(const task of todoItems){
-                    if(task["id"] == taskID){
-                        projectList[index]["projectTodo"].push(task);
-                        task['project'] = projectName;
-                        break projectLoop;
-                    }
-                }
-            }else{
-                index++ // to move to other project
-            }
-        }
+    const addTask = (todoItems, projectName, task) => {
+        const projectFolder = projectList.find(project => project.projectName == projectName);
+        const taskItem = todoItems.find(taskItem => taskItem == task);
+
+        taskItem.project = projectName;
+        projectFolder.projectTodo.push(taskItem);
+
+    }
+
+    const updateTask = (projectName, task) => {
+
     }
 
     const removeTask = (projectName, taskID) => {
 
         let index = 0;
-        projectLoop: for(const project of projectList){
-            if (project['projectName'] == projectName){
+        projectLoop: for (const project of projectList) {
+            if (project['projectName'] == projectName) {
                 const projectTask = projectList[index]['projectTodo'];
-                
-                for(const task of projectTask){
+
+                for (const task of projectTask) {
                     let taskIndex = 0;
-                    if(task['id'] == taskID){                        
+                    if (task['id'] == taskID) {
                         projectTask.splice(taskIndex, 1);
                         break projectLoop;
                     }
@@ -96,7 +91,6 @@ function todoProjects(){
     }
 
 
-
     return {
         getProjects,
         addProject,
@@ -105,19 +99,19 @@ function todoProjects(){
     }
 }
 
-function projectItem(title){
-    
+function projectItem(title) {
+
     return {
-        "projectName" : title,
-        "projectTodo" : [],
+        "projectName": title,
+        "projectTodo": [],
     }
 }
 
 
-function todoItem(title, description = "", dueDate, project='default', priority='minor') {
+function todoItem(title, description = "", dueDate, project = 'default', priority = 'minor') {
 
     dueDate = new Date(dueDate);
-    const id = crypto.randomUUID().slice(1,15);
+    const id = crypto.randomUUID().slice(1, 15);
 
     return {
         id,
@@ -130,4 +124,4 @@ function todoItem(title, description = "", dueDate, project='default', priority=
 }
 
 
-export { todoList, todoProjects}
+export { todoList, todoProjects }
