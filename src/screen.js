@@ -1,24 +1,31 @@
 import { endOfToday, format } from "date-fns";
 import { Todo } from "./todo.js";
 import { filterProjectTask } from "./projectDisplay.js";
+import { resetProjectForm, resetTaskForm } from "./resetForms.js";
 
-
+export{taskModal, projectModal}
+const taskModal = document.querySelector('#task-modal')
+const projectModal = document.querySelector('#project-modal')
 
 export function ScreenDisplay() {
+    resetTaskForm();
+    resetProjectForm();
     const todo = Todo();
+    
+    const taskForm = taskModal.querySelector('#task-form');
+    const projectForm = projectModal.querySelector('#project-form')
 
     const taskDisplay = document.querySelector('.tasksContainer');
     taskDisplay.id = "default"
     const projectDisplay = document.querySelector('.projectContainer');
 
     const addTaskButton = document.querySelector('#addTask');
-    const taskForm = document.querySelector('#task-form');
 
     const addProjectButton = document.querySelector("#addProject");
 
     const dueDateSetDefault = document.querySelector('#dueDate');
     dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
-
+    
     const projectColorDefault = document.querySelector('#projectColor');
     projectColorDefault.value ='#9d8df1'
 
@@ -27,10 +34,7 @@ export function ScreenDisplay() {
         displayProjects();
     }
 
-    const updateTaskDisplay = (projectName="default") => {
-        console.log(projectName);
-        
-
+    const updateTaskDisplay = (projectName="default") => {  
         displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo)
 
     }
@@ -200,7 +204,6 @@ export function ScreenDisplay() {
             projectName.textContent = '# ' + item['projectName'];
 
             projectName.style.backgroundColor = item.color
-            console.log(item.color);
             
             if(item.projectName == 'default') projectName.textContent = 'All Task'
             projectName.id = item.projectName;
@@ -245,6 +248,7 @@ export function ScreenDisplay() {
 
 
     const addTask = () => {
+
         const title = document.querySelector('#title').value;
         let dueDate = document.querySelector('#dueDate').value;
         const project = document.querySelector('#project').value;
@@ -261,7 +265,7 @@ export function ScreenDisplay() {
         }
 
         updateTaskDisplay(display);
-
+        
     }
 
     const addProject = () => {
@@ -270,9 +274,8 @@ export function ScreenDisplay() {
         
         todo.addProject(projectName.value,  projectColor.value);
         displayProjects();
+
         
-        projectName.value = '';
-        projectColor.value = '#9d8df1';
     }
 
     const markComplete = (event) => {
@@ -294,7 +297,6 @@ export function ScreenDisplay() {
     todo.addTask('Task 1', '', dueDate, "STS");
     todo.addTask('Task 2', '', dueDate);
     todo.addTask('Task 3', '', dueDate, 'IAS')
-    console.log(todo.getProjects());
 
 
 
