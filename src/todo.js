@@ -5,8 +5,8 @@ export function Todo() {
     let project = [];
 
     const getProjects = () => project;
-    const addProject = (title) => {
-        project.push(projectItem(title));
+    const addProject = (title, color) => {
+        project.push(projectItem(title, color));
     }
     addProject('default');
 
@@ -61,8 +61,6 @@ export function Todo() {
     const moveTaskProject = (newProject, task) => {
         const currentProject = getProjectFolder(task.project);
 
-w
-
         const taskIndex = currentProject.projectTodo.findIndex(item => item.id == task.id);
         console.log(currentProject.projectTodo[taskIndex].title);
         
@@ -90,11 +88,11 @@ w
 
 }
 
-function projectItem(title) {
-
+function projectItem(title, color='#9d8df1') {
     return {
         "projectName": title,
         "projectTodo": [],
+        "color": color,
     }
 }
 
