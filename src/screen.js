@@ -21,6 +21,8 @@ export function ScreenDisplay() {
     const dueDateSetDefault = document.querySelector('#dueDate');
     dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
 
+    const projectColorDefault = document.querySelector('#projectColor');
+    projectColorDefault.value ='#9d8df1'
 
 
     const displayScreen = () => {
@@ -190,27 +192,34 @@ export function ScreenDisplay() {
         todo.updateTask(taskID, title, dueDate, project, priority, description);
     }
 
+
     const displayProjects = () => {
         projectDisplay.textContent = ""
+
+        
         for (const item of todo.getProjects()) {
 
             const projectName = document.createElement('button');
-            projectName.textContent = '# ' + item['projectName'];
-            if(item.projectName == 'default') projectName.textContent = 'All Task'
             projectName.classList = "projectName";
+            projectName.textContent = '# ' + item['projectName'];
+
+            projectName.style.backgroundColor = item.color
+            console.log(item.color);
+            
+            if(item.projectName == 'default') projectName.textContent = 'All Task'
             projectName.id = item.projectName;
             projectName.addEventListener('click', (event) => {
                 const projectTodo = todo.getProjectFolder(event.target.id).projectTodo
                 taskDisplay.id = item.projectName;
+
                 updateTaskDisplay(event.target.id)
             })
-
+            
             projectDisplay.appendChild(projectName);
         }
-
+        
         const projectOption = taskForm.querySelector('#project')
         projectOption.textContent = '';
-
         for (const item of todo.getProjects()) {
 
             const option = document.createElement('option');
@@ -260,7 +269,12 @@ export function ScreenDisplay() {
         const projectName = document.querySelector("#projectName").value;
         const projectColor = document.querySelector("#projectColor").value;
 
-        todo.addProject(projectName);
+        
+        console.log(projectColor);
+        console.log(todo.getProjects());
+        
+        
+        todo.addProject(projectName,  projectColor);
         displayProjects();
 
     }
