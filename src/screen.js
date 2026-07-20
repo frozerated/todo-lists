@@ -36,8 +36,6 @@ export function ScreenDisplay() {
 
     }
 
-    //if project has an ID
-    //
 
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
