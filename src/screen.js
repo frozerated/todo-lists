@@ -247,9 +247,14 @@ export function ScreenDisplay() {
 
         if (!dueDate) dueDate = endOfToday();
 
-        todo.addTask(title, desc, dueDate, project, priority)
+        todo.addTask(title, desc, dueDate, project, priority);
 
-        updateTaskDisplay();
+        let display = taskDisplay.id;
+        if(display != 'default'){
+            display = project;
+        }
+
+        updateTaskDisplay(display);
 
     }
 
