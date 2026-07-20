@@ -62,15 +62,14 @@
             <dialog id ="project-modal" class="project modal">
                 <h1>Add Project</h1>
                 <form id="project-form" method="dialog">
+                    <label for="projectName">Project Title: </label>
+                    <input type="text" name="projectName" id="projectName">
+    
+                    <label for="projectColor">Project Color</label>
+                    <input type="color" name="projectColor" id="projectColor">
+                    
                     
                 </form>
-                <label for="projectName">Project Title: </label>
-                <input type="text" name="projectName" id="projectName">
-
-                <label for="projectColor">Project Color</label>
-                <input type="color" name="projectColor" id="projectColor">
-                
-                
                 <button id="addProject" type="submit" form="project-form">Add Project</button>
                 <button class="close-modal" commandfor="project-modal" command="close">Close</button>
             </dialog>
