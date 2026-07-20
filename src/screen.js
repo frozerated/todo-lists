@@ -16,14 +16,11 @@ export function ScreenDisplay() {
 
     const addProjectButton = document.querySelector("#addProject");
 
-
-
     const dueDateSetDefault = document.querySelector('#dueDate');
     dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
 
     const projectColorDefault = document.querySelector('#projectColor');
     projectColorDefault.value ='#9d8df1'
-
 
     const displayScreen = () => {
         updateTaskDisplay();
@@ -165,7 +162,6 @@ export function ScreenDisplay() {
             updateTaskDisplay();
             taskDetailModal.close()
             taskDetailModal.remove();
-            taskDetailModal.remove();
 
         })
 
@@ -196,7 +192,7 @@ export function ScreenDisplay() {
     const displayProjects = () => {
         projectDisplay.textContent = ""
 
-        
+
         for (const item of todo.getProjects()) {
 
             const projectName = document.createElement('button');
@@ -233,12 +229,15 @@ export function ScreenDisplay() {
 
 
     addTaskButton.addEventListener('click', (event) => {
+
         addTask();
 
     });
 
     addProjectButton.addEventListener('click', (event) => {
+            // event.preventDefault();
         addProject();
+
     })
 
 
@@ -266,17 +265,14 @@ export function ScreenDisplay() {
     }
 
     const addProject = () => {
-        const projectName = document.querySelector("#projectName").value;
-        const projectColor = document.querySelector("#projectColor").value;
-
+        const projectName = document.querySelector("#projectName");
+        const projectColor = document.querySelector("#projectColor");        
         
-        console.log(projectColor);
-        console.log(todo.getProjects());
-        
-        
-        todo.addProject(projectName,  projectColor);
+        todo.addProject(projectName.value,  projectColor.value);
         displayProjects();
-
+        
+        projectName.value = '';
+        projectColor.value = '#9d8df1';
     }
 
     const markComplete = (event) => {
