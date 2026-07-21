@@ -69,7 +69,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .itemContainer {
   display: flex;
-  border: solid 1px gray;
+  border-left: gray solid 2px;
+  padding: 16px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 18px;
@@ -81,12 +82,19 @@ h1, h2, h3, h4, h5, h6 {
   margin: 32px;
 }
 
+.critical{
+  border-color: #d97b86;
+}
+.significant{
+  border-color: #e0b96b;
+}
+.minor{
+  border-color: #8fb8c9;
+}
+
 /* Modal */
 .modal{
     min-width: 45ch;
-
-
-
 }
 
 
