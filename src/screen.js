@@ -56,12 +56,19 @@ export function ScreenDisplay() {
 
             })
 
-            itemContainer.appendChild(title);
-
+            
             const dueDate = document.createElement('p');
             dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
             dueDate.classList = 'dueDate';
-            itemContainer.appendChild(dueDate);
+            
+            const titleAndDueDate = document.createElement('div')
+            titleAndDueDate.appendChild(title);
+            titleAndDueDate.appendChild(dueDate);
+            itemContainer.appendChild(titleAndDueDate);
+
+            const taskProject = document.createElement('p')
+            taskProject.textContent = element.project;
+            itemContainer.appendChild(taskProject)
 
             const completeButton = document.createElement('button');
             completeButton.textContent = "Done"
