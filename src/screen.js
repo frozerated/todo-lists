@@ -44,7 +44,7 @@ export function ScreenDisplay() {
         taskDisplay.textContent = "";
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
-            itemContainer.classList = 'itemContainer';
+            itemContainer.classList = `itemContainer ${element.priority.toLowerCase()}`
 
             const title = document.createElement('button');
             title.classList = 'title';
