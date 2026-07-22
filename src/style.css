@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+:root{
+    --color-add-task: #8f96d8;
+}
+
 
 .container > div{
     border: black solid 2px;
@@ -63,21 +67,29 @@ h1, h2, h3, h4, h5, h6 {
 .main{
     grid-column: 2;
 }
+.main > h1, .sidebar> h1{
+  font-size: 2.2rem;
+}
 
 .taskSubHeader{
   display:flex;
   margin-top: 0;
   margin: 0.8em;
+  gap:0.5em;
+  align-items: center;
 }
 
 .taskSubHeader > p{
-  font-size: 1.7rem;
+  font-size: 2rem;
 }
 
 .taskSubHeader > button{
-  background: none;
-  border: none;
+  background-color: var(--color-add-task);
+  border-radius: 20px;
+  padding: 0.2em 0.8em;
+  border:0;
   font-size: 1.2rem;
+
 
 }
 button:hover{
