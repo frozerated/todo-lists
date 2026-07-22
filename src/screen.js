@@ -35,8 +35,12 @@ export function ScreenDisplay() {
     }
 
     const updateTaskDisplay = (projectName="default") => {  
-        displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo)
-
+        const projectHeader = document.querySelector('#projectHeader')
+        projectHeader.textContent = projectName;
+        if(projectName == 'default'){
+            projectHeader.textContent = 'All'
+        }
+        displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName)
     }
 
 
