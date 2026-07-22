@@ -70,16 +70,29 @@ h1, h2, h3, h4, h5, h6 {
 .itemContainer {
   display: flex;
   border-left: gray solid 2px;
-  padding: 16px;
   justify-content: space-between;
+  padding: 16px;
   align-items: center;
   margin-bottom: 18px;
   align-items: center;
 }
 
+.itemContainer .title{
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.itemContainer .title:hover{
+  cursor: pointer;
+}
+
+
 
 .tasksContainer {
-  margin: 32px;
+  width: 75%;
+  max-width: 800px;
 }
 
 .critical{
