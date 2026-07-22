@@ -53,17 +53,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .container{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: minmax(200px, 20%) minmax(600px, 3fr);
     min-height: 100vh;
 
 }
-
+.main, .sidebar{
+  padding: 2em;
+}
 .main{
     grid-column: 2;
 }
 
 .taskSubHeader{
   display:flex;
+  margin-top: 0;
+  margin: 0.8em;
 }
 
 .taskSubHeader > p{
@@ -110,6 +114,7 @@ button:hover{
 .tasksContainer {
   width: 75%;
   max-width: 800px;
+  margin: 0   1.5em;
 }
 
 .critical{
