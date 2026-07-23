@@ -49,17 +49,17 @@ export function ScreenDisplay() {
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
             itemContainer.classList = `itemContainer`
-
-            const title = document.createElement('button');
-            title.classList = 'title';
-            title.textContent = element['title'];
-            title.id = element['id'];
-
-            title.addEventListener('click', (event) => {
+            itemContainer.id = element['id'];
+            itemContainer.addEventListener('click', (event) => {
                 openTaskDetails(event.target.id)
 
             })
 
+            const title = document.createElement('button');
+            title.classList = 'title';
+            title.textContent = element['title'];
+
+            
             
             const dueDate = document.createElement('p');
             dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
