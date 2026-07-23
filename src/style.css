@@ -74,7 +74,6 @@ button:hover{
   background-color: var(--sidebar-color);
 }
 
-
 .sidebar .add-project{
   background-color: var(--add-project-color);
   border: none;
@@ -121,14 +120,19 @@ button:hover{
 
 .itemContainer {
   display: flex;
-  border-left: gray solid 2px;
+  /* border: solid 2px black; */
+  border-bottom: solid rgba(128, 128, 128, 0.714) 1px;
   justify-content: space-between;
-  padding: 16px;
   align-items: center;
   margin-bottom: 18px;
   align-items: center;
+  padding: 0.5em 0;
 }
 
+.itemContainer > div{
+  border-left:  2px solid;
+  padding: 0.5em ;
+}
 .itemContainer .title{
   font-size: 1.5rem;
   background-color: transparent;
@@ -148,13 +152,13 @@ button:hover{
 }
 
 
-.critical{
+.itemContainer > .critical{
   border-color: #d97b86;
 }
-.significant{
+.itemContainer > .significant{
   border-color: #e0b96b;
 }
-.minor{
+.itemContainer > .minor{
   border-color: #8fb8c9;
 }
 

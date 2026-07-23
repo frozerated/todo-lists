@@ -36,9 +36,9 @@ export function ScreenDisplay() {
 
     const updateTaskDisplay = (projectName="default") => {  
         const projectHeader = document.querySelector('#projectHeader')
-        projectHeader.textContent = projectName;
+        projectHeader.textContent = projectName + ': ';
         if(projectName == 'default'){
-            projectHeader.textContent = 'All'
+            projectHeader.textContent = 'All: '   
         }
         displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName)
     }
@@ -48,7 +48,7 @@ export function ScreenDisplay() {
         taskDisplay.textContent = "";
         itemList.forEach(element => {
             const itemContainer = document.createElement('div');
-            itemContainer.classList = `itemContainer ${element.priority.toLowerCase()}`
+            itemContainer.classList = `itemContainer`
 
             const title = document.createElement('button');
             title.classList = 'title';
@@ -68,6 +68,7 @@ export function ScreenDisplay() {
             const titleAndDueDate = document.createElement('div')
             titleAndDueDate.appendChild(title);
             titleAndDueDate.appendChild(dueDate);
+            titleAndDueDate.classList = `${element.priority.toLowerCase()}`
             itemContainer.appendChild(titleAndDueDate);
 
             const taskProject = document.createElement('p')
