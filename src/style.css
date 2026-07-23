@@ -73,6 +73,10 @@ button:hover{
   grid-row: 1;
   grid-column: 1;
   background-color: var(--sidebar-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  text-align: center;
 }
 
 .sidebar .add-project{
@@ -80,6 +84,17 @@ button:hover{
   border: none;
   padding: 0.3em 1em;
   border-radius: 12px;
+  margin-bottom: 2em;
+}
+.sidebar .projectContainer{
+  display: flex;
+  flex-direction: column;
+  gap:0.8em;
+}
+.sidebar .projectName{
+  border: none;
+  border-radius: 12px;
+  padding: 0.3em 1em;
 }
 .main, .sidebar{
   padding: 2em;
