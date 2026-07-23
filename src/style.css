@@ -47,9 +47,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root{
-    --color-add-task: #8f96d8;
     --sidebar-color: #EEF7F8;
     --main-color:#FFFFFF;
+    --add-task-color:#7D8FD6;
+    --done-color:#6FCF97;
+    --add-project-color:#B497E7;
 }
 
 
@@ -90,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .taskSubHeader > button{
-  background-color: var(--color-add-task);
+  background-color: var(--add-task-color);
   border-radius: 20px;
   padding: 0.2em 0.8em;
   border:0;
@@ -127,6 +129,19 @@ button:hover{
   cursor: pointer;
 }
 
+.itemContainer > .completeButton{
+  background-color: var(--done-color);
+  border: none;
+  border-radius: 12px;
+  padding: 0.3em 1em;
+}
+
+.sidebar .add-project{
+  background-color: var(--add-project-color);
+  border: none;
+  padding: 0.3em 1em;
+  border-radius: 12px;
+}
 
 
 .tasksContainer {
