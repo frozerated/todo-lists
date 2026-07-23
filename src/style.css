@@ -52,8 +52,10 @@ h1, h2, h3, h4, h5, h6 {
     --add-task-color:#7D8FD6;
     --done-color:#6FCF97;
     --add-project-color:#B497E7;
+  }
+button:hover{
+  cursor: pointer;
 }
-
 
 .container > div{
     border: black solid 2px;
@@ -65,8 +67,19 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
 
 }
+
 .sidebar{
+  grid-row: 1;
+  grid-column: 1;
   background-color: var(--sidebar-color);
+}
+
+
+.sidebar .add-project{
+  background-color: var(--add-project-color);
+  border: none;
+  padding: 0.3em 1em;
+  border-radius: 12px;
 }
 .main, .sidebar{
   padding: 2em;
@@ -100,12 +113,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 }
-button:hover{
-  cursor: pointer;
-}
-.sidebar{
-    grid-row: 1;
-    grid-column: 1;
+.tasksContainer {
+  width: 75%;
+  max-width: 800px;
+  margin: 0   1.5em;
 }
 
 .itemContainer {
@@ -136,19 +147,6 @@ button:hover{
   padding: 0.3em 1em;
 }
 
-.sidebar .add-project{
-  background-color: var(--add-project-color);
-  border: none;
-  padding: 0.3em 1em;
-  border-radius: 12px;
-}
-
-
-.tasksContainer {
-  width: 75%;
-  max-width: 800px;
-  margin: 0   1.5em;
-}
 
 .critical{
   border-color: #d97b86;
