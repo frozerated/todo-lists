@@ -134,6 +134,9 @@ button:hover{
   margin: 0   1.5em;
 }
 
+.itemContainer > *:not(button){
+  pointer-events: none;
+}
 .itemContainer {
   display: flex;
   /* border: solid 2px black; */

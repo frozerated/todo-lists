@@ -51,14 +51,17 @@ export function ScreenDisplay() {
             itemContainer.classList = `itemContainer`
             itemContainer.id = element['id'];
             itemContainer.addEventListener('click', (event) => {
+                 if (event.target !== event.currentTarget) {
+                    return
+                }
                 openTaskDetails(event.target.id)
-
-            })
+                console.log(event.target.id);
+                
+            },true)
 
             const title = document.createElement('button');
             title.classList = 'title';
             title.textContent = element['title'];
-
             
             
             const dueDate = document.createElement('p');
@@ -291,6 +294,7 @@ export function ScreenDisplay() {
     }
 
     const markComplete = (event) => {
+        event.stopPropagation();
         todo.removeTask(todo.getTask(event.target.id));
         updateTaskDisplay(taskDisplay.id);
     }
