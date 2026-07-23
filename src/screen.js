@@ -224,26 +224,34 @@ export function ScreenDisplay() {
             projectName.id = item.projectName;
             projectName.addEventListener('click', (event) => {
                 const projectTodo = todo.getProjectFolder(event.target.id).projectTodo
-                taskDisplay.id = item.projectName;
-
+                taskDisplay.id = item.projectName;                
+                updateProjectSelection(event.target.id);
                 updateTaskDisplay(event.target.id)
             })
             
+            updateProjectSelection();
             projectDisplay.appendChild(projectName);
         }
         
-        const projectOption = taskForm.querySelector('#project')
-        projectOption.textContent = '';
-        for (const item of todo.getProjects()) {
 
-            const option = document.createElement('option');
-            option.value = item['projectName'];
-            option.textContent = item['projectName']
-            projectOption.appendChild(option);
-        }
 
     }
 
+    const updateProjectSelection = (projectName) =>{
+        const projectOption = taskForm.querySelector('#project')
+        projectOption.textContent = '';
+        
+        for (const item of todo.getProjects()) {
+            const option = document.createElement('option');
+            option.value = item['projectName'];
+            if (projectName== option.value){
+                option.selected = true;
+                }
+             
+            option.textContent = item['projectName']
+            projectOption.appendChild(option);
+        }
+    }
 
 
     addTaskButton.addEventListener('click', (event) => {
