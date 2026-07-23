@@ -52,6 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     --add-task-color:#7D8FD6;
     --done-color:#6FCF97;
     --add-project-color:#B497E7;
+    --task-hover-color:#F6FBFC;
   }
 button:hover{
   cursor: pointer;
@@ -127,11 +128,18 @@ button:hover{
   margin-bottom: 18px;
   align-items: center;
   padding: 0.5em 0;
+  padding-right: 0.5em;
 }
 
 .itemContainer > div{
   border-left:  2px solid;
   padding: 0.5em ;
+}
+.itemContainer:hover{
+  background-color: var(--task-hover-color);
+  cursor: pointer;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 .itemContainer .title{
   font-size: 1.5rem;
