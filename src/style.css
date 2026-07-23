@@ -48,6 +48,8 @@ h1, h2, h3, h4, h5, h6 {
 
 :root{
     --color-add-task: #8f96d8;
+    --sidebar-color: #EEF7F8;
+    --main-color:#FFFFFF;
 }
 
 
@@ -61,11 +63,15 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
 
 }
+.sidebar{
+  background-color: var(--sidebar-color);
+}
 .main, .sidebar{
   padding: 2em;
 }
 .main{
     grid-column: 2;
+    background-color: var(--main-color);
 }
 .main > h1, .sidebar> h1{
   font-size: 2.2rem;
