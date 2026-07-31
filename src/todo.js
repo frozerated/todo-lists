@@ -45,6 +45,18 @@ export function Todo() {
         }
     }
 
+    const removeProject = (projectName) => {
+        const projectIndex = project.findIndex((project) => project.projectName == projectName)
+
+        console.log('Removing: ' + projectName);
+        console.log(projectIndex);
+        
+        project.splice(projectIndex, 1);
+        
+    }
+    
+    
+
     const removeTask = (task) => {
         console.log(task);
         
@@ -84,6 +96,7 @@ export function Todo() {
         getTask,
         updateTask,
         removeTask,
+        removeProject,
     }
 
 }
