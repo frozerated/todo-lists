@@ -11,6 +11,8 @@ export function ScreenDisplay() {
     resetTaskForm();
     resetProjectForm();
     const todo = Todo();
+    console.log(todo.getProjects());
+    
     
     const taskForm = taskModal.querySelector('#task-form');
     const projectForm = projectModal.querySelector('#project-form')
@@ -35,12 +37,27 @@ export function ScreenDisplay() {
     }
 
     const updateTaskDisplay = (projectName="default") => {  
+        displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName);
         const projectHeader = document.querySelector('#projectHeader')
         projectHeader.textContent = projectName + ': ';
         if(projectName == 'default'){
             projectHeader.textContent = 'All: '   
+        }else{
+            const removeProjectButton = document.createElement('button');
+            removeProjectButton.textContent = 'Remove Project'
+            removeProjectButton.classList = 'removeProject danger';
+            removeProjectButton.addEventListener('click', (event)=>{
+                todo.removeProject(projectName);
+                console.log(todo.getProjects());
+                updateTaskDisplay();
+                displayProjects();
+                
+            })
+            taskDisplay.appendChild(removeProjectButton);
+    
         }
-        displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName)
+
+
     }
 
 
@@ -87,8 +104,6 @@ export function ScreenDisplay() {
             itemContainer.appendChild(completeButton);
 
             displayArea.appendChild(itemContainer);
-
-
 
         });
 
