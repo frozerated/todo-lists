@@ -191,6 +191,13 @@ button:hover{
 /* Modal */
 .modal{
     min-width: 45ch;
+    border: none;
+    border-radius: 20px;
+    padding: 2.5rem;
+}
+
+.taskDetail{
+  
 }
 
 
