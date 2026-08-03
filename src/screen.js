@@ -112,10 +112,14 @@ export function ScreenDisplay() {
     }
     
     const openTaskDetails = (taskID) => {
-        const allTaskContainer = document.querySelector('.main')
+        const allTaskContainer = document.querySelector('.main');
+        const task = todo.getTask(taskID)
+
+
         const taskDetailModal = document.createElement('dialog');
         const taskDetailForm = document.createElement('form');
-        const task = todo.getTask(taskID)
+        taskDetailForm.classList = 'taskDetail'
+        
         console.log(taskID);
 
         taskDetailForm.reset();
@@ -149,18 +153,7 @@ export function ScreenDisplay() {
             project.appendChild(option);
         }
 
-
-        const projectLabel = document.createElement('label')
-        projectLabel.htmlFor = 'projectInput';
-        projectLabel.textContent = 'Project: '
-        taskDetailForm.appendChild(projectLabel);
         taskDetailForm.appendChild(project)
-
-
-        const priorityLabel = document.createElement('label')
-        priorityLabel.htmlFor = 'priorityInput';
-        priorityLabel.textContent = 'Priority: '
-        taskDetailForm.appendChild(priorityLabel);
 
 
         const selectPriority = document.createElement('select')

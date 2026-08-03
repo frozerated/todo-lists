@@ -189,18 +189,41 @@ button:hover{
 }
 
 /* Modal */
-.modal{
-    min-width: 45ch;
-    border: none;
-    border-radius: 20px;
-    padding: 2.5rem;
+
+dialog{
+  border: none;
+  border-radius: 20px;
+  padding: 2.5rem;
 }
 
 .taskDetail{
-  
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  gap:1em;
+  align-items: end;
+}
+.taskDetail input,
+.taskDetail select,
+.taskDetail textarea{
+  border: none;
+  border-bottom: 2px solid black;
 }
 
+.taskDetail #title{
+  grid-area: 1 / 1 / 2 /span 2 ;
+  max-width: 12rem;
+  font-size: 1.3rem;
+}
 
+.taskDetail #projectInput{
+  grid-row: 1;
+
+}
+
+.taskDetail #description{
+  grid-area: 2 / span 3 ;
+}
 .modal::backdrop{
     background: rgb(0 0 0 / 0.4);
 }
