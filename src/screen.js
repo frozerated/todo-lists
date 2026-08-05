@@ -177,6 +177,7 @@ export function ScreenDisplay() {
         const description = document.createElement('textarea');
         description.value = task['description'];
         description.id = 'description'
+        description.placeholder = 'Text Description...'
         taskDetailForm.appendChild(description)
 
 
