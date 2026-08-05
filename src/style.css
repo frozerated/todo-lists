@@ -1,4 +1,4 @@
-/*
+  /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
@@ -196,32 +196,32 @@ dialog{
   padding: 2.5rem;
 }
 
-.taskDetail{
+.task-form{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: 1fr 2fr 1fr;
   gap:1em;
   align-items: end;
 }
-.taskDetail input,
-.taskDetail select,
-.taskDetail textarea{
+.task-form input,
+.task-form select,
+.task-form textarea{
   border: none;
   border-bottom: 2px solid black;
 }
 
-.taskDetail #title{
+.task-form #title{
   grid-area: 1 / 1 / 2 /span 2 ;
   max-width: 12rem;
   font-size: 1.3rem;
 }
 
-.taskDetail #projectInput{
+.task-form #projectInput{
   grid-row: 1;
 
 }
 
-.taskDetail #description{
+.task-form #description{
   grid-area: 2 / span 3 ;
 }
 .modal::backdrop{
