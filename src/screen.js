@@ -183,7 +183,7 @@ export function ScreenDisplay() {
         description.value = task['description'];
         description.id = 'description'
         description.classList = 'description'
-        description.placeholder = 'Text Description...'
+        description.placeholder = 'Task Description...'
         taskDetailForm.appendChild(description)
 
 
