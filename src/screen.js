@@ -14,7 +14,8 @@ export function ScreenDisplay() {
     console.log(todo.getProjects());
     
     
-    const taskForm = taskModal.querySelector('#task-form');
+    
+    const taskForm = taskModal.querySelector('#add-task-form');
     const projectForm = projectModal.querySelector('#project-form')
 
     const taskDisplay = document.querySelector('.tasksContainer');

@@ -5,7 +5,7 @@ export function resetTaskForm() {
 
     taskModal.addEventListener('close', () => {
         taskModal.close();
-        const taskForm = taskModal.querySelector('#task-form');
+        const taskForm = taskModal.querySelector('#add-task-form');
         taskForm.reset()
         const dueDate = taskForm.querySelector('#dueDate')
         dueDate.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59';
