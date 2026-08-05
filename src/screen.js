@@ -130,17 +130,20 @@ export function ScreenDisplay() {
         const taskName = document.createElement('input');
         taskName.value = task['title'];
         taskName.id = 'title'
+        taskName.classList = 'title'
         taskDetailForm.appendChild(taskName);
 
         const dueDate = document.createElement('input')
         dueDate.type = 'datetime-local'
         dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
         dueDate.id = 'dueDate'
+        dueDate.classList = 'dueDate'
         taskDetailForm.appendChild(dueDate)
 
 
         const project = document.createElement("select");
         project.id = "projectInput";
+        project.classList = "project";
 
         for (const item of todo.getProjects()) {
             const option = document.createElement('option');
@@ -159,6 +162,7 @@ export function ScreenDisplay() {
 
         const selectPriority = document.createElement('select')
         selectPriority.id = 'priorityInput'
+        selectPriority.classList = 'priority'
 
 
         for (const priority of ['Critical', 'Significant', 'Minor']) {
@@ -178,6 +182,7 @@ export function ScreenDisplay() {
         const description = document.createElement('textarea');
         description.value = task['description'];
         description.id = 'description'
+        description.classList = 'description'
         description.placeholder = 'Text Description...'
         taskDetailForm.appendChild(description)
 

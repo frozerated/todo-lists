@@ -210,18 +210,18 @@ dialog{
   border-bottom: 2px solid black;
 }
 
-.task-form #title{
+.task-form .title{
   grid-area: 1 / 1 / 2 /span 2 ;
   max-width: 12rem;
   font-size: 1.3rem;
 }
 
-.task-form #projectInput{
+.task-form .project{
   grid-row: 1;
 
 }
 
-.task-form #description{
+.task-form .description{
   grid-area: 2 / span 3 ;
 }
 .modal::backdrop{
