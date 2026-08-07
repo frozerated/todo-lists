@@ -61,7 +61,7 @@ body{
 
 
     --add-task-color:#2A9D8F;
-    --done-color:#6FCF97;
+    --done-color:#E6F4F1;
     --white-surface-color:#FFFFFF;
     --task-hover-color:#F6FBFC;
   }
@@ -177,6 +177,7 @@ button:hover{
   border-top-right-radius: 12px;
 }
 .itemContainer .title{
+  color: var(--text-primary-color);
   font-size: 1rem;
   font-weight: 600;
   background-color: transparent;
@@ -187,6 +188,7 @@ button:hover{
 .itemContainer *:not(.title){
   font-size: 0.9rem;
   font-weight: 400;
+  color: var(--text-secondary-color);
 }
 
 .itemContainer .title:hover{
@@ -195,6 +197,7 @@ button:hover{
 
 .itemContainer > .completeButton{
   background-color: var(--done-color);
+  color: var(--primary-color) ;
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
