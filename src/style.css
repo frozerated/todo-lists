@@ -47,19 +47,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root{
-    --sidebar-color: #EEF7F8;
+    --sidebar-color: #F4F8F8;
     --main-color:#FFFFFF;
-    --add-task-color:#7D8FD6;
+    --add-task-color:#457B7D;
     --done-color:#6FCF97;
     --add-project-color:#B497E7;
     --task-hover-color:#F6FBFC;
   }
 button:hover{
   cursor: pointer;
-}
-
-.container > div{
-    border: black solid 2px;
 }
 
 .container{
