@@ -199,7 +199,7 @@ dialog{
 .task-form{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-rows: minmax(1fr, 100px) 100px 50px;
   gap:1em;
   align-items: end;
 }
@@ -212,7 +212,7 @@ dialog{
 
 .task-form .title{
   grid-area: 1 / 1 / 2 /span 2 ;
-  max-width: 12rem;
+  max-width: 75%;
   font-size: 1.3rem;
 }
 
@@ -223,6 +223,7 @@ dialog{
 
 .task-form .description{
   grid-area: 2 / span 3 ;
+  resize: vertical;
 }
 .modal::backdrop{
     background: rgb(0 0 0 / 0.4);
