@@ -45,7 +45,9 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
-
+body{
+  font-family: "Segoe UI", sans-serif, system-ui;
+}
 :root{
     --sidebar-color: #F1F5F5;
     --main-color:#F8FAFA;
