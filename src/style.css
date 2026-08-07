@@ -85,6 +85,8 @@ button:hover{
   padding: 0.3em 1em;
   border-radius: 12px;
   margin-bottom: 2em;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 .sidebar .projectContainer{
   display: flex;
@@ -95,6 +97,8 @@ button:hover{
   border: none;
   border-radius: 12px;
   padding: 0.3em 1em;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 .main, .sidebar{
   padding: 2em;
@@ -104,7 +108,8 @@ button:hover{
     background-color: var(--main-color);
 }
 .main > h1, .sidebar> h1{
-  font-size: 2.2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .taskSubHeader{
@@ -116,7 +121,8 @@ button:hover{
 }
 
 .taskSubHeader > p{
-  font-size: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .taskSubHeader > button{
@@ -125,7 +131,7 @@ button:hover{
   border-radius: 12px;
   padding: 0.2em 0.8em;
   border:0;
-  font-size: 1rem;
+  font-size: 0.9rem;  
   font-weight: 600;
 
 
@@ -162,10 +168,16 @@ button:hover{
   border-top-right-radius: 12px;
 }
 .itemContainer .title{
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
   background-color: transparent;
   border: none;
   padding: 0;
+}
+
+.itemContainer *:not(.title){
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .itemContainer .title:hover{
@@ -175,6 +187,8 @@ button:hover{
 .itemContainer > .completeButton{
   background-color: var(--done-color);
   border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
   border-radius: 12px;
   padding: 0.3em 1em;
 }
