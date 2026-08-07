@@ -47,8 +47,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root{
-    --sidebar-color: #F4F8F8;
-    --main-color:#FFFFFF;
+    --sidebar-color: #F1F5F5;
+    --main-color:#F8FAFA;
+
+
+
     --add-task-color:#457B7D;
     --done-color:#6FCF97;
     --add-project-color:#B497E7;
