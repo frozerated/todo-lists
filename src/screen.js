@@ -118,6 +118,7 @@ export function ScreenDisplay() {
 
 
         const taskDetailModal = document.createElement('dialog');
+        taskDetailModal.classList = 'task-dialog'
         const taskDetailForm = document.createElement('form');
         taskDetailForm.classList = 'task-form'
         
