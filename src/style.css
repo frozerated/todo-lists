@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     --sidebar-divider-color:#E2E8E8;
 
 
-    --add-task-color:#457B7D;
+    --add-task-color:#2A9D8F;
     --done-color:#6FCF97;
     --add-project-color:#B497E7;
     --task-hover-color:#F6FBFC;
@@ -121,10 +121,12 @@ button:hover{
 
 .taskSubHeader > button{
   background-color: var(--add-task-color);
-  border-radius: 20px;
+  color:#FFFFFF;
+  border-radius: 12px;
   padding: 0.2em 0.8em;
   border:0;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
 
 
 }
