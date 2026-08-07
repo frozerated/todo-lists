@@ -49,14 +49,20 @@ body{
   font-family: "Segoe UI", sans-serif, system-ui;
 }
 :root{
-    --sidebar-color: #F1F5F5;
-    --main-color:#F8FAFA;
+    --sidebar-bg-color: #F1F5F5;
+    --main-bg-color:#F8FAFA;
     --sidebar-divider-color:#E2E8E8;
+
+    --primary-color: #2A9D8F;
+    --primary-light-color: #E6F4F1;
+
+    --text-primary-color: #263238;
+    --text-secondary-color: #6B7C80;
 
 
     --add-task-color:#2A9D8F;
     --done-color:#6FCF97;
-    --add-project-color:#B497E7;
+    --white-surface-color:#FFFFFF;
     --task-hover-color:#F6FBFC;
   }
 button:hover{
@@ -73,7 +79,7 @@ button:hover{
 .sidebar{
   grid-row: 1;
   grid-column: 1;
-  background-color: var(--sidebar-color);
+  background-color: var(--sidebar-bg-color);
   border-right: var(--sidebar-divider-color) 2px solid;
   display: flex;
   flex-direction: column;
@@ -82,8 +88,9 @@ button:hover{
 }
 
 .sidebar .add-project{
-  background-color: var(--add-project-color);
-  border: none;
+  background-color: var(--white-surface-color);
+  border: var(--primary-color) 1px solid;
+  color:var(--primary-color);
   padding: 0.3em 1em;
   border-radius: 12px;
   margin-bottom: 2em;
@@ -107,7 +114,7 @@ button:hover{
 }
 .main{
     grid-column: 2;
-    background-color: var(--main-color);
+    background-color: var(--main-bg-color);
 }
 .main > h1, .sidebar> h1{
   font-size: 1.5rem;
