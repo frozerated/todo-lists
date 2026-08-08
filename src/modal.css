@@ -22,9 +22,6 @@ dialog *::placeholder{
     color: var(--placeholder-text-color);
 }
 
-dialog > form > *:hover{
-    cursor: pointer;
-}
 dialog{
   border: none;
   border-radius: 20px;
