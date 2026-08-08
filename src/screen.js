@@ -89,7 +89,7 @@ export function ScreenDisplay() {
             const titleAndDueDate = document.createElement('div')
             titleAndDueDate.appendChild(title);
             titleAndDueDate.appendChild(dueDate);
-            titleAndDueDate.classList = `${element.priority.toLowerCase()}`
+            itemContainer.classList = `itemContainer ${element.priority.toLowerCase()}`
             itemContainer.appendChild(titleAndDueDate);
 
             const taskProject = document.createElement('p')

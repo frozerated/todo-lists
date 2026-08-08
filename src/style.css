@@ -62,9 +62,10 @@ body{
     --task-container-bg:#F1F5F5;
     --task-container-border:#E2E8E8;
 
+    --border-color:#E2E8E8;
+    --border-color-hover:  #CBD8D7;
 
     --add-task-color:#2A9D8F;
-    --done-color:#E6F4F1;
     --white-surface-color:#FFFFFF;
     --task-hover-color:#F6FBFC;
   }
@@ -168,25 +169,21 @@ button{
 }
 .itemContainer {
   display: flex;
-  /* border: solid 2px black; */
-  border-bottom: solid rgba(128, 128, 128, 0.714) 1px;
+  border: solid 0.1em var(--border-color);
+  background-color: var(--white-surface-color);
+  border-radius: 12px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 18px;
   align-items: center;
-  padding: 0.5em 0;
-  padding-right: 0.5em;
+  padding: 0.5em 1.2em;
+  border-left: 0.3em solid;
 }
 
-.itemContainer > div{
-  border-left:  2px solid;
-  padding: 0.5em ;
-}
 .itemContainer:hover{
   background-color: var(--task-hover-color);
+  border-color:var(--border-color-hover) ;
   cursor: pointer;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
 }
 .itemContainer .title{
   color: var(--text-primary-color);
@@ -203,12 +200,8 @@ button{
   color: var(--text-secondary-color);
 }
 
-.itemContainer .title:hover{
-  cursor: pointer;
-}
-
 .itemContainer > .completeButton{
-  background-color: var(--done-color);
+  background-color: var(--primary-light-color);
   color: var(--primary-color) ;
   border: none;
   font-size: 0.9rem;
@@ -216,15 +209,20 @@ button{
   border-radius: 12px;
 }
 
+.itemContainer > .completeButton:hover{
+  background-color: var(--primary-color);
+  color:var(--white-surface-color);
+}
 
-.itemContainer > .critical{
-  border-color: #d97b86;
+
+.itemContainer.critical{
+   border-left-color: #d97b86;
 }
-.itemContainer > .significant{
-  border-color: #e0b96b;
+.itemContainer.significant{
+   border-left-color: #e0b96b;
 }
-.itemContainer > .minor{
-  border-color: #8fb8c9;
+.itemContainer.minor{
+  border-left-color: #8fb8c9;
 }
 
 button.removeProject{
