@@ -67,6 +67,7 @@ dialog::backdrop{
   align-items: end;
 }
 dialog [type='text'],
+.task-form input,
 .task-form select,
 .task-form textarea{
   border: none;
