@@ -10,8 +10,6 @@ export function ScreenDisplay() {
     resetTaskForm();
     resetProjectForm();
     const todo = Todo();
-    console.log(todo.getProjects());
-    
     
     
     const taskForm = taskModal.querySelector('#add-task-form');
@@ -51,7 +49,6 @@ export function ScreenDisplay() {
             removeProjectButton.classList = 'removeProject danger';
             removeProjectButton.addEventListener('click', (event)=>{
                 todo.removeProject(projectName);
-                console.log(todo.getProjects());
                 updateTaskDisplay();
                 displayProjects();
                 
@@ -78,7 +75,6 @@ export function ScreenDisplay() {
                     return
                 }
                 openTaskDetails(event.target.id)
-                console.log(event.target.id);
                 
             },true)
 
@@ -142,7 +138,6 @@ export function ScreenDisplay() {
         const taskDetailForm = document.createElement('form');
         taskDetailForm.classList = 'task-form'
         
-        console.log(taskID);
 
         taskDetailForm.reset();
         taskDetailForm.id = 'task-update-detail'

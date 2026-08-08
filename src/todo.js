@@ -47,10 +47,6 @@ export function Todo() {
 
     const removeProject = (projectName) => {
         const projectIndex = project.findIndex((project) => project.projectName == projectName)
-
-        console.log('Removing: ' + projectName);
-        console.log(projectIndex);
-        
         project.splice(projectIndex, 1);
         
     }
@@ -58,15 +54,12 @@ export function Todo() {
     
 
     const removeTask = (task) => {
-        console.log(task);
-        
         const projectFolder = project.find(projectFolder => projectFolder.projectName == task.project)
         const defaultProject = project.find(projectFolder => projectFolder.projectName == 'default');
         const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
         const defaultIndex = defaultProject.projectTodo.findIndex(item => item.id == task.id);
         defaultProject.projectTodo.splice(defaultIndex, 1);
         if(task.project != 'default') projectFolder.projectTodo.splice(taskIndex, 1);
-        console.log(projectFolder);
         
     }
 
@@ -74,7 +67,6 @@ export function Todo() {
         const currentProject = getProjectFolder(task.project);
 
         const taskIndex = currentProject.projectTodo.findIndex(item => item.id == task.id);
-        console.log(currentProject.projectTodo[taskIndex].title);
         
         if (task.project != 'default') {
             currentProject.projectTodo.splice(taskIndex, 1);
