@@ -334,9 +334,11 @@ export function ScreenDisplay() {
     // -- for testing purposes
     const dueDate = `${11}, ${25}, ${2005}`;
 
-    todo.addTask('Task 1', '', dueDate, "STS");
-    todo.addTask('Task 2', '', dueDate);
-    todo.addTask('Task 3', '', dueDate, 'IAS')
+    todo.addTask('Task 1', '', dueDate, "STS", 'critical');
+    todo.addTask('Task 2', '', dueDate, '', 'significant');
+    todo.addTask('Task 3', '', dueDate, 'IAS', 'minor');
+    todo.addTask('Task 4', '', dueDate, 'IAS', 'critical');
+    todo.addTask('Task 5', '', dueDate, 'STS', 'minor');
 
 
 
