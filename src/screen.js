@@ -40,9 +40,9 @@ export function ScreenDisplay() {
     const updateTaskDisplay = (projectName="default") => {  
         displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName);
         const projectHeader = document.querySelector('#projectHeader')
-        projectHeader.textContent = projectName + ': ';
+        projectHeader.textContent = projectName;
         if(projectName == 'default'){
-            projectHeader.textContent = 'All: '   
+            projectHeader.textContent = 'All Tasks'   
         }else{
             const removeProjectButton = document.createElement('button');
             removeProjectButton.textContent = 'Remove Project'
