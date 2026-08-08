@@ -72,6 +72,9 @@ body{
     --add-task-color:#2A9D8F;
     --white-surface-color:#FFFFFF;
     --task-hover-color:#F6FBFC;
+
+    --near-deadline-color:#F4A261;
+    --near-deadline-hover:#E98B4A;
   }
 button:hover{
   cursor: pointer;
@@ -224,13 +227,13 @@ button{
 }
 
 
-.itemContainer.critical{
+.tasksContainer > .itemContainer.critical{
    border-left-color: #d97b86;
 }
-.itemContainer.significant{
+.tasksContainer >.itemContainer.significant{
    border-left-color: #e0b96b;
 }
-.itemContainer.minor{
+.tasksContainer >.itemContainer.minor{
   border-left-color: #8fb8c9;
 }
 
@@ -247,4 +250,12 @@ button.removeProject{
   background-color: #FCEAEA;
   color: #B23A3A;
   border: #C94C4C solid 1px;
+}
+
+.near-deadline{
+  border-color: var(--near-deadline-color);
+}
+
+.near-deadline:hover{
+  border-color: var(--near-deadline-hover);
 }

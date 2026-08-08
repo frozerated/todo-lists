@@ -1,4 +1,4 @@
-import { endOfToday, format } from "date-fns";
+import { endOfToday, format,differenceInCalendarDays, addDays, getYear, setYear  } from "date-fns";
 import { Todo } from "./todo.js";
 import { resetProjectForm, resetTaskForm } from "./resetForms.js";
 
@@ -90,11 +90,16 @@ export function ScreenDisplay() {
             const dueDate = document.createElement('p');
             dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
             dueDate.classList = 'dueDate';
+            const now = new Date();
+            const nearDeadline  = differenceInCalendarDays (element['dueDate'],now) <= 1;
             
+            if(nearDeadline) itemContainer.classList.add('near-deadline')
+            
+
             const titleAndDueDate = document.createElement('div')
             titleAndDueDate.appendChild(title);
             titleAndDueDate.appendChild(dueDate);
-            itemContainer.classList = `itemContainer ${element.priority.toLowerCase()}`
+            itemContainer.classList.add(element.priority.toLowerCase())
             itemContainer.appendChild(titleAndDueDate);
 
             const taskProject = document.createElement('p')
@@ -347,16 +352,23 @@ export function ScreenDisplay() {
 
 
     // -- for testing purposes
-    const dueDate = `${11}, ${25}, ${2005}`;
+    const dueDate = `${8}, ${8}, ${2026}`;
+    const day1 = endOfToday(new Date());
+    const day2 = addDays(new Date(), 1);
+    const currentYear = getYear(new Date())
+    const day3 = setYear(new Date(2005, 10, 25), currentYear);
+    const day4 = addDays(new Date(), 3)
+    todo.addTask('Task 1', 'Lorem Ipsum', day1, "STS", 'critical');
+    todo.addTask('Task 2', '', day3);
+    todo.addTask('Task 3', 'Task 3 description', day2, 'IAS', 'minor');
+    todo.addTask('Task 4', '', day4, 'IAS', 'significant');
+    todo.addTask('Task 5', '', day4, 'STS', 'minor');
 
-    todo.addTask('Task 1', '', dueDate, "STS", 'critical');
-    todo.addTask('Task 2', '', dueDate);
-    todo.addTask('Task 3', '', dueDate, 'IAS', 'minor');
-    todo.addTask('Task 4', '', dueDate, 'IAS', 'critical');
-    todo.addTask('Task 5', '', dueDate, 'STS', 'minor');
 
-
-
+    
+    //set date
+    //get current year  
+    //change the year of that date
     return {
         displayScreen,
     }
