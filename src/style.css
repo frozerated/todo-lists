@@ -119,6 +119,7 @@ button:hover{
 .main > h1, .sidebar> h1{
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--text-primary-color);
 }
 
 .taskSubHeader{
@@ -130,7 +131,7 @@ button:hover{
 }
 
 .taskSubHeader > p{
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
