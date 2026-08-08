@@ -292,3 +292,8 @@ form{
 dialog label{
     display: block;
 }
+
+
+dialog *:focus{
+  outline: none;
+}
