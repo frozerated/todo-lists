@@ -59,6 +59,9 @@ body{
     --text-primary-color: #263238;
     --text-secondary-color: #6B7C80;
 
+    --task-container-bg:#F1F5F5;
+    --task-container-border:#E2E8E8;
+
 
     --add-task-color:#2A9D8F;
     --done-color:#E6F4F1;
@@ -154,6 +157,10 @@ button{
   width: 75%;
   max-width: 800px;
   margin: 0   1.5em;
+  background-color: var(--task-container-bg);
+  border: var(--task-container-border) solid 1px;
+  border-radius: 12px;
+  padding:2em 3em;
 }
 
 .itemContainer > *:not(button){
