@@ -105,7 +105,6 @@ button:hover{
 .sidebar .projectName{
   border: none;
   border-radius: 12px;
-  padding: 0.3em 1em;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--white-surface-color);
@@ -140,12 +139,15 @@ button:hover{
   background-color: var(--add-task-color);
   color:#FFFFFF;
   border-radius: 12px;
-  padding: 0.2em 0.8em;
   border:0;
   font-size: 0.9rem;  
   font-weight: 600;
 
 
+}
+
+button{
+  padding: 0.4em 1.5em;
 }
 .tasksContainer {
   width: 75%;
@@ -204,7 +206,6 @@ button:hover{
   font-size: 0.9rem;
   font-weight: 600;
   border-radius: 12px;
-  padding: 0.3em 1em;
 }
 
 
