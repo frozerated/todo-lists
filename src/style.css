@@ -148,6 +148,7 @@ button:hover{
 
 button{
   padding: 0.4em 1.5em;
+  border-radius: 12px;
 }
 .tasksContainer {
   width: 75%;
@@ -219,6 +220,20 @@ button{
   border-color: #8fb8c9;
 }
 
+button.removeProject{
+  font-size: 0.82em;
+  font-weight: 500;
+  color: #C94C4C;
+  background-color: transparent;
+  border: #E8B8B8 solid 1px;
+
+}
+
+.removeProject:hover{
+  background-color: #FCEAEA;
+  color: #B23A3A;
+  border: #C94C4C solid 1px;
+}
 /* Modal */
 
 dialog{
