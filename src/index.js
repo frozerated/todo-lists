@@ -2,6 +2,7 @@
 import { Todo } from "./todo.js";
 import {ScreenDisplay} from "./screen.js";
 import "./style.css";
+import "./modal.css";
 
 const todo = Todo();
 
