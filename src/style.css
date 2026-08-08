@@ -166,8 +166,6 @@ button{
   border-radius: 12px;
 }
 .tasksContainer {
-  width: 75%;
-  max-width: 800px;
   margin: 0   1.5em;
   background-color: var(--task-container-bg);
   border: var(--task-container-border) solid 1px;
