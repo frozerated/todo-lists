@@ -1,6 +1,5 @@
 import { endOfToday, format } from "date-fns";
 import { Todo } from "./todo.js";
-import { filterProjectTask } from "./projectDisplay.js";
 import { resetProjectForm, resetTaskForm } from "./resetForms.js";
 
 export{taskModal, projectModal}
