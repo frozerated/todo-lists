@@ -1,4 +1,4 @@
-import { endOfToday, format,differenceInCalendarDays, addDays, getYear, setYear, formatDistanceToNow, isPast, endOfYesterday  } from "date-fns";
+import { endOfToday, format,differenceInCalendarDays, addDays, getYear, setYear, formatDistanceToNow, isPast, endOfYesterday,  } from "date-fns";
 import { Todo } from "./todo.js";
 import { resetProjectForm, resetTaskForm } from "./resetForms.js";
 
@@ -24,7 +24,7 @@ export function ScreenDisplay() {
     const addProjectButton = document.querySelector("#addProject");
 
     const dueDateSetDefault = document.querySelector('#dueDate');
-    dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
+    dueDateSetDefault.value = format(endOfToday(), "yyyy-MM-dd'T'HH:mm")
     
     const projectColorDefault = document.querySelector('#projectColor');
     projectColorDefault.value ='#457B9D'
@@ -159,7 +159,11 @@ export function ScreenDisplay() {
 
         const dueDate = document.createElement('input')
         dueDate.type = 'datetime-local'
-        dueDate.value = format(task['dueDate'], 'yyyy-MM-dd') + 'T23:59'
+       dueDate.value = format(task['dueDate'], "yyyy-MM-dd'T'HH:mm");
+
+        
+    
+        
         dueDate.id = 'dueDate'
         dueDate.classList = 'dueDate'
         taskDetailForm.appendChild(dueDate)
