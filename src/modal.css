@@ -10,6 +10,7 @@
     --placeholder-text-color:#9AA8AA;
     
     --input-border-color:#E2E8E8;
+    --white-surface-color:#FFFFFF;
 }
 
 dialog *{
@@ -60,6 +61,17 @@ dialog::backdrop{
   resize: vertical;
 }
 
+.task-form button{
+    background-color: var(--primary-color);
+    color: var(--white-surface-color);
+    font-weight: 600;
+    font-size: 0.9em;
+    border: none;
+}
+
+.task-form  button:hover{
+  background-color: var(--primary-hover-color);
+}
 
 dialog label{
     display: block;
