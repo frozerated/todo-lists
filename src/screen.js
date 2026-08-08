@@ -77,7 +77,7 @@ export function ScreenDisplay() {
                 
             },true)
 
-            const title = document.createElement('button');
+            const title = document.createElement('p');
             title.classList = 'title';
             title.textContent = element['title'];
             
