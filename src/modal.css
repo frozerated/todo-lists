@@ -1,4 +1,24 @@
+:root{
+    --primary-color: #2A9D8F;
+    --primary-light-color: #E6F4F1;
+    --primary-hover-color: #237A70;
 
+
+    --text-primary-color: #263238;
+    --text-secondary-color: #6B7C80;
+    --primary-text-hover:#237A70;
+    --placeholder-text-color:#9AA8AA;
+    
+    --input-border-color:#E2E8E8;
+}
+
+dialog *{
+    color: var(--text-primary-color);
+}
+
+dialog *::placeholder{
+    color: var(--placeholder-text-color);
+}
 dialog{
   border: none;
   border-radius: 20px;
@@ -21,7 +41,7 @@ dialog::backdrop{
 .task-form select,
 .task-form textarea{
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--input-border-color);
 }
 
 .task-form .title{
@@ -40,11 +60,6 @@ dialog::backdrop{
   resize: vertical;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 dialog label{
     display: block;
@@ -53,4 +68,6 @@ dialog label{
 
 dialog *:focus{
   outline: none;
+  border-bottom: 2px solid var(--primary-color);
 }
+
