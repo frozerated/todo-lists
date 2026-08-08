@@ -55,9 +55,13 @@ body{
 
     --primary-color: #2A9D8F;
     --primary-light-color: #E6F4F1;
+    --primary-hover-color: #237A70;
+
 
     --text-primary-color: #263238;
     --text-secondary-color: #6B7C80;
+    --primary-text-hover:#237A70;
+    
 
     --task-container-bg:#F1F5F5;
     --task-container-border:#E2E8E8;
@@ -101,6 +105,11 @@ button:hover{
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+.add-project:hover{
+  background-color: var(--primary-light-color);
+  color:var(--primary-text-hover);
+}
 .sidebar .projectContainer{
   display: flex;
   flex-direction: column;
@@ -137,17 +146,19 @@ button:hover{
 .taskSubHeader > p{
   font-size: 1.3rem;
   font-weight: 600;
+  color: var(--text-primary-color);
 }
 
 .taskSubHeader > button{
-  background-color: var(--add-task-color);
+  background-color: var(--primary-color);
   color:#FFFFFF;
   border-radius: 12px;
   border:0;
   font-size: 0.9rem;  
   font-weight: 600;
-
-
+}
+.taskSubHeader > button:hover{
+  background-color: var(--primary-hover-color);
 }
 
 button{
