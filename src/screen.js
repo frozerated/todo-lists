@@ -1,4 +1,4 @@
-import { endOfToday, format,differenceInCalendarDays, addDays, getYear, setYear  } from "date-fns";
+import { endOfToday, format,differenceInCalendarDays, addDays, getYear, setYear, formatDistanceToNow, isPast, endOfYesterday  } from "date-fns";
 import { Todo } from "./todo.js";
 import { resetProjectForm, resetTaskForm } from "./resetForms.js";
 
@@ -84,12 +84,20 @@ export function ScreenDisplay() {
             
             
             const dueDate = document.createElement('p');
-            dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
             dueDate.classList = 'dueDate';
+
             const now = new Date();
-            const nearDeadline  = differenceInCalendarDays (element['dueDate'],now) <= 1;
-            
-            if(nearDeadline) itemContainer.classList.add('near-deadline')
+            const nearDeadline  = differenceInCalendarDays(element['dueDate'],now) <= 1;
+            const isOverdue = isPast(element['dueDate']);
+
+            if(nearDeadline){
+                itemContainer.classList.add('near-deadline');
+                dueDate.textContent = formatDistanceToNow(element['dueDate']);
+                if(isOverdue) dueDate.textContent = 'Overdue';
+
+            } else{
+                dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
+            }
             
 
             const titleAndDueDate = document.createElement('div')
@@ -349,7 +357,7 @@ export function ScreenDisplay() {
     // -- for testing purposes
     const dueDate = `${8}, ${8}, ${2026}`;
     const day1 = endOfToday(new Date());
-    const day2 = addDays(new Date(), 1);
+    const day2 = endOfYesterday()
     const currentYear = getYear(new Date())
     const day3 = setYear(new Date(2005, 10, 25), currentYear);
     const day4 = addDays(new Date(), 3)
