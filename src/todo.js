@@ -46,9 +46,20 @@ export function Todo() {
     }
 
     const removeProject = (projectName) => {
+
+        const defaultProject = getProjectFolder('default').projectTodo
+
+        let taskToDelete = [];
+        for(const task of defaultProject){
+            if (task.project == projectName) taskToDelete.push(task);
+        }
+
+        taskToDelete.forEach(element => {
+            removeTask(element);
+        });
+        
         const projectIndex = project.findIndex((project) => project.projectName == projectName)
         project.splice(projectIndex, 1);
-        
     }
     
     
