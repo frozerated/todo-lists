@@ -48,9 +48,11 @@ export function ScreenDisplay() {
             removeProjectButton.textContent = 'Remove Project'
             removeProjectButton.classList = 'removeProject danger';
             removeProjectButton.addEventListener('click', (event)=>{
-                todo.removeProject(projectName);
-                updateTaskDisplay();
-                displayProjects();
+                if(confirm("Removing projects will delete all tasks, continue?")){
+                    todo.removeProject(projectName);
+                    updateTaskDisplay();
+                    displayProjects();
+                }
                 
             })
             taskDisplay.appendChild(removeProjectButton);
