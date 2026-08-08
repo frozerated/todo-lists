@@ -101,7 +101,7 @@ export function Todo() {
 
 }
 
-function projectItem(title, color='#9d8df1') {
+function projectItem(title, color='#457B9D') {
     return {
         "projectName": title,
         "projectTodo": [],

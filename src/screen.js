@@ -30,7 +30,7 @@ export function ScreenDisplay() {
     dueDateSetDefault.value = format(endOfToday(), 'yyyy-MM-dd') + 'T23:59'
     
     const projectColorDefault = document.querySelector('#projectColor');
-    projectColorDefault.value ='#9d8df1'
+    projectColorDefault.value ='#457B9D'
 
     const displayScreen = () => {
         updateTaskDisplay();
@@ -235,7 +235,7 @@ export function ScreenDisplay() {
             projectName.textContent = '# ' + item['projectName'];
 
             projectName.style.backgroundColor = item.color
-            
+            // projectName.color = '#FFFFFF';
             if(item.projectName == 'default') projectName.textContent = 'All Task'
             projectName.id = item.projectName;
             projectName.addEventListener('click', (event) => {
