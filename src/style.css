@@ -129,7 +129,7 @@ button:hover{
     grid-column: 2;
     background-color: var(--main-bg-color);
 }
-.main > h1, .sidebar> h1{
+.taskSubHeader > p, .sidebar> h1{
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary-color);
@@ -137,16 +137,11 @@ button:hover{
 
 .taskSubHeader{
   display:flex;
+  justify-content: space-between;
   margin-top: 0;
   margin: 0.8em;
   gap:0.5em;
   align-items: center;
-}
-
-.taskSubHeader > p{
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary-color);
 }
 
 .taskSubHeader > button{
