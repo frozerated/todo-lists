@@ -138,10 +138,8 @@ button:hover{
 .taskSubHeader{
   display:flex;
   justify-content: space-between;
-  margin-top: 0;
-  margin: 0.8em;
-  gap:0.5em;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .taskSubHeader > button{
@@ -161,7 +159,6 @@ button{
   border-radius: 12px;
 }
 .tasksContainer {
-  margin: 0   1.5em;
   background-color: var(--task-container-bg);
   border: var(--task-container-border) solid 1px;
   border-radius: 12px;
