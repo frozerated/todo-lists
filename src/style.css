@@ -180,11 +180,11 @@ button{
   pointer-events: none;
 }
 .itemContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 100px;
   border: solid 0.1em var(--border-color);
   background-color: var(--white-surface-color);
   border-radius: 12px;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 18px;
   align-items: center;
