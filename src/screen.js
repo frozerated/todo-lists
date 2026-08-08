@@ -121,10 +121,20 @@ export function ScreenDisplay() {
     const openTaskDetails = (taskID) => {
         const allTaskContainer = document.querySelector('.main');
         const task = todo.getTask(taskID)
-
-
+    
+        const originalDialogHeader = document.querySelector('.dialog-header');
+        const dialogHeader = originalDialogHeader.cloneNode(true);
+        
         const taskDetailModal = document.createElement('dialog');
         taskDetailModal.classList = 'task-dialog'
+        const dialogHeaderText = dialogHeader.querySelector('h3');
+        
+        taskDetailModal.appendChild(dialogHeader);
+        dialogHeaderText.textContent = "Edit Task"
+        const dialogHeaderClose = dialogHeader.querySelector('button');
+        dialogHeaderClose.commandForElement = taskDetailModal;
+        dialogHeaderClose.command = 'close';
+        
         const taskDetailForm = document.createElement('form');
         taskDetailForm.classList = 'task-form'
         
