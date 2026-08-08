@@ -41,6 +41,7 @@ export function ScreenDisplay() {
         displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName);
         const projectHeader = document.querySelector('#projectHeader')
         projectHeader.textContent = projectName;
+
         if(projectName == 'default'){
             projectHeader.textContent = 'All Tasks'   
         }else{
@@ -55,9 +56,15 @@ export function ScreenDisplay() {
                 
             })
             taskDisplay.appendChild(removeProjectButton);
-    
+            
         }
-
+        const taskHeader = document.querySelector('.taskSubHeader');
+        const taskCounter= todo.getProjectFolder(projectName).projectTodo.length
+        console.log('Task Remaining: ' + taskCounter);
+        const taskCounterText =  document.createElement('p');
+        taskCounterText.textContent = taskCounter + ' tasks remaining';
+        taskHeader.appendChild(taskCounterText)
+        
 
     }
 
