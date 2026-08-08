@@ -1,9 +1,9 @@
 // // index.js
-import { todoList } from "./todo.js";
+import { Todo } from "./todo.js";
 import {ScreenDisplay} from "./screen.js";
 import "./style.css";
 
-const todo = todoList();
+const todo = Todo();
 
 
 
