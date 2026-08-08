@@ -59,18 +59,18 @@
             </div>
             
             <dialog id ="project-modal" class="project">
-                <h1>Add Project</h1>
-                <form id="project-form" method="dialog">
-                    <label for="projectName">Project Title: </label>
-                    <input type="text" name="projectName" id="projectName">
+                 <div class="dialog-header">
+                    <h3>Add Task</h3>
+                    <button class="close-button" commandfor="project-modal" command="close">✕</button>
+                </div>
+                <form id="project-form"class='project-form' method="dialog">
+                    <input type="text" name="projectName" id="projectName" placeholder="Project">
     
-                    <label for="projectColor">Project Color</label>
                     <input type="color" name="projectColor" id="projectColor">
                     
                     
                 </form>
                 <button id="addProject" type="submit" form="project-form">Add Project</button>
-                <button class="close-modal" commandfor="project-modal" command="close">Close</button>
             </dialog>
         </div>
     </div>

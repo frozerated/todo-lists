@@ -15,6 +15,7 @@
 
 dialog *{
     color: var(--text-primary-color);
+    font-weight: 400;
 }
 
 dialog *::placeholder{
@@ -68,7 +69,7 @@ dialog::backdrop{
   gap:1em;
   align-items: end;
 }
-.task-form input,
+dialog [type='text'],
 .task-form select,
 .task-form textarea{
   border: none;
@@ -102,6 +103,35 @@ dialog::backdrop{
 
 .task-form  button:hover{
   background-color: var(--primary-hover-color);
+
+}
+
+.project-form {
+    display: flex;
+    align-items: flex-start;
+    gap:2em;
+}
+.project-form > [type='text']{
+    margin-bottom: 1rem;
+}
+
+
+.project-form > [type='color']{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 3em;
+    height: 2em;    
+}
+
+.project > button{
+    background-color: var(--white-surface-color);
+    border: var(--primary-color) 1px solid;
+    color:var(--primary-color);
+    padding: 0.3em 1em;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 dialog label{
