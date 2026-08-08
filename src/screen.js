@@ -248,7 +248,7 @@ export function ScreenDisplay() {
 
             const projectName = document.createElement('button');
             projectName.classList = "projectName";
-            projectName.textContent = '# ' + item['projectName'];
+            projectName.textContent = item['projectName'];
 
             projectName.style.backgroundColor = item.color
             // projectName.color = '#FFFFFF';
