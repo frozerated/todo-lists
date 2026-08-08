@@ -20,6 +20,6 @@ export function resetProjectForm(){
         const projectColor = projectForm.querySelector('#projectColor');
         projectForm.reset();
         
-        projectColor.value = '#9d8df1';
+        projectColor.value = '#457B9D';
     })
 }
