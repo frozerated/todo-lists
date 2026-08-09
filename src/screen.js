@@ -1,6 +1,7 @@
 import { endOfToday, format,differenceInCalendarDays, addDays, getYear, setYear, formatDistanceToNow, isPast, endOfYesterday,  } from "date-fns";
 import { Todo } from "./todo.js";
 import { resetProjectForm, resetTaskForm } from "./resetForms.js";
+import { getTextColorHEX } from "./colorUtils.js";
 
 export{taskModal, projectModal}
 const taskModal = document.querySelector('#task-modal')
@@ -262,8 +263,9 @@ export function ScreenDisplay() {
             const projectName = document.createElement('button');
             projectName.classList = "projectName";
             projectName.textContent = item['projectName'];
-
             projectName.style.backgroundColor = item.color
+            const textColor = getTextColorHEX(item.color, '#FFFFFF', '#263238')
+            projectName.style.color = textColor;
             // projectName.color = '#FFFFFF';
             if(item.projectName == 'default') projectName.textContent = 'All Task'
             projectName.id = item.projectName;
