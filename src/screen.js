@@ -49,7 +49,7 @@ export function ScreenDisplay() {
             removeProjectButton.textContent = 'Remove Project'
             removeProjectButton.classList = 'removeProject danger';
             removeProjectButton.addEventListener('click', (event)=>{
-                if(confirm("Removing projects will delete all tasks, continue?")){
+                if(confirm("Deleting this project will also delete all related tasks. Continue?")){
                     todo.removeProject(projectName);
                     updateTaskDisplay();
                     displayProjects();
@@ -359,7 +359,7 @@ export function ScreenDisplay() {
 
     // Testing purposes
     todo.addProject("STS");
-    todo.addProject("IAS");
+    todo.addProject("IAS", '#8eccb6');
 
 
     // -- for testing purposes
