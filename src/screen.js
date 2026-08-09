@@ -7,12 +7,10 @@ export{taskModal, projectModal}
 const taskModal = document.querySelector('#task-modal')
 const projectModal = document.querySelector('#project-modal')
 
-export function ScreenDisplay() {
+export function ScreenDisplay(todo) {
     resetTaskForm();
     resetProjectForm();
-    const todo = Todo();
-    
-    
+
     const taskForm = taskModal.querySelector('#add-task-form');
     const projectForm = projectModal.querySelector('#project-form')
 
