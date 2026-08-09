@@ -2,13 +2,17 @@ function getTextColor(bgColor){
     
 }
 
-function getContrastRatio(bgColor){
-    //get better ratio
-    //set bgColor as L1 while text (black) as L2
-    //set bgCOlor as L2 while text(white) as L3
-    //greater contrast = winner
+export function getGreaterContrast(mainColor, color1, color2){
+    let first_ratio = (mainColor + 0.05) / (color1+0.05);
+    let second_ratio = (color2 + 0.05) / (mainColor+0.05)
 
-    
+    if(first_ratio > second_ratio ){
+        return color1
+    }
+    else{
+        return color2;
+    }
+
 
 }
 
