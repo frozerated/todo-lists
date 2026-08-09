@@ -2,15 +2,15 @@ function getTextColor(bgColor){
     
 }
 
-export function getGreaterContrast(mainColor, color1, color2){
-    let first_ratio = (mainColor + 0.05) / (color1+0.05);
-    let second_ratio = (color2 + 0.05) / (mainColor+0.05)
+export function getGreaterContrast(mainColor, lighterColor, darkerColor){
+    let lighterColorRatio = (mainColor + 0.05) / (lighterColor+0.05);
+    let darkerColorRatio = (darkerColor + 0.05) / (mainColor+0.05)
 
-    if(first_ratio > second_ratio ){
-        return color1
+    if(lighterColorRatio > darkerColorRatio ){
+        return lighterColor
     }
     else{
-        return color2;
+        return darkerColor;
     }
 
 
