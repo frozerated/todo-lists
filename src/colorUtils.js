@@ -11,11 +11,7 @@ export function getTextColorHEX(bgColor, lightTextColor, darkTextColor){
 
     })
 
-    console.log(colorLuminance);
     const greatContrastIndex = getGreaterContrast(colorLuminance);
-    console.log(greatContrastIndex);
-    
-    console.log(colors[greatContrastIndex])
     return colors[greatContrastIndex];
     
 }
@@ -46,7 +42,6 @@ export function getGreaterContrast(colorsLuminance){
         return colorsLuminance.indexOf(lighterColorText);
     }
     else{
-        console.log(darkTextRatio)
        return colorsLuminance.indexOf(darkerColorText);
     }
 
