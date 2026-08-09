@@ -27,9 +27,6 @@ export function ScreenDisplay() {
     const dueDateSetDefault = document.querySelector('#dueDate');
     dueDateSetDefault.value = format(endOfToday(), "yyyy-MM-dd'T'HH:mm")
     
-    const projectColorDefault = document.querySelector('#projectColor');
-    projectColorDefault.value ='#457B9D'
-
     const displayScreen = () => {
         updateTaskDisplay();
         displayProjects();

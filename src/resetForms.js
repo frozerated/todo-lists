@@ -19,7 +19,5 @@ export function resetProjectForm(){
         const projectForm = projectModal.querySelector('#project-form');
         const projectColor = projectForm.querySelector('#projectColor');
         projectForm.reset();
-        
-        projectColor.value = '#457B9D';
     })
 }
