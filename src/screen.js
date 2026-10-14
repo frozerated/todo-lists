@@ -77,10 +77,10 @@ export function ScreenDisplay(todo) {
 
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
-        itemList.forEach(element => {
+        for(const taskItem of itemList) {
             const itemContainer = document.createElement('div');
             itemContainer.classList = `itemContainer`
-            itemContainer.id = element['id'];
+            itemContainer.id = taskItem['id'];
             itemContainer.addEventListener('click', (event) => {
                 if (event.target !== event.currentTarget) {
                     return
@@ -91,47 +91,47 @@ export function ScreenDisplay(todo) {
 
             const title = document.createElement('p');
             title.classList = 'title';
-            title.textContent = element['title'];
+            title.textContent = taskItem['title'];
 
 
             const dueDate = document.createElement('p');
             dueDate.classList = 'dueDate';
 
             const now = new Date();
-            const nearDeadline = differenceInCalendarDays(element['dueDate'], now) <= 1;
-            const isOverdue = isPast(element['dueDate']);
+            const nearDeadline = differenceInCalendarDays(taskItem['dueDate'], now) <= 1;
+            const isOverdue = isPast(taskItem['dueDate']);
 
             if (nearDeadline) {
                 itemContainer.classList.add('near-deadline');
-                dueDate.textContent = formatDistanceToNow(element['dueDate']);
+                dueDate.textContent = formatDistanceToNow(taskItem['dueDate']);
                 if (isOverdue) dueDate.textContent = 'Overdue';
 
             } else {
-                dueDate.textContent = format(element['dueDate'], 'E, MMM dd p ');
+                dueDate.textContent = format(taskItem['dueDate'], 'E, MMM dd p ');
             }
 
 
             const titleAndDueDate = document.createElement('div')
             titleAndDueDate.appendChild(title);
             titleAndDueDate.appendChild(dueDate);
-            itemContainer.classList.add(element.priority.toLowerCase())
+            itemContainer.classList.add(taskItem.priority.toLowerCase())
             itemContainer.appendChild(titleAndDueDate);
 
             const taskProject = document.createElement('p')
-            taskProject.textContent = element.project;
+            taskProject.textContent = taskItem.project;
             itemContainer.appendChild(taskProject)
 
             const completeButton = document.createElement('button');
             completeButton.textContent = "Done"
             completeButton.classList = 'completeButton';
 
-            completeButton.id = element['id']
+            completeButton.id = taskItem['id']
             completeButton.addEventListener('click', markComplete)
             itemContainer.appendChild(completeButton);
 
             displayArea.appendChild(itemContainer);
 
-        });
+        }
 
 
 
