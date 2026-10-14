@@ -18,10 +18,11 @@ export function Todo() {
 
         const newTask = todoItem(title, description, dueDate, projectName, priority);
 
-        getProjectFolder('default').projectTodo.push(newTask);
-        if (projectName && projectName != 'default') {
+
+        // getProjectFolder('default').projectTodo.push(newTask);
+        // if (projectName && projectName != 'default') {
             getProjectFolder(projectName).projectTodo.push(newTask);
-        }
+        // }
     }
 
     const getTask = (taskID) => {

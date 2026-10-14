@@ -31,7 +31,6 @@ export function ScreenDisplay(todo) {
     }
 
     const updateTaskDisplay = (projectName = "default") => {
-        displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName);
         const projectHeader = document.querySelector('#projectHeader');
 
 
@@ -39,7 +38,9 @@ export function ScreenDisplay(todo) {
 
         if (projectName == 'default') {
             projectHeader.textContent = 'All Tasks'
+             displayAllTask();
         } else {
+            displayTasks(taskDisplay, todo.getProjectFolder(projectName).projectTodo, projectName);
             const removeProjectButton = document.createElement('button');
             removeProjectButton.textContent = 'Remove Project'
             removeProjectButton.classList = 'removeProject danger';
@@ -58,6 +59,18 @@ export function ScreenDisplay(todo) {
         const taskCounterText = document.querySelector('.task-counter');
         taskCounterText.textContent = taskCounter + ' tasks remaining';
 
+
+    }
+
+    const displayAllTask = ()=>{
+ 
+        const allTask = []
+        for(const project of todo.getProjects()){
+            for(const task of todo.getProjectFolder(project.projectName).projectTodo){
+                allTask.push(task);
+            }
+        displayTasks(taskDisplay, allTask);
+        }
 
     }
 
@@ -367,13 +380,11 @@ export function ScreenDisplay(todo) {
 
     //task creation
     todo.addTask('Task 1', 'Lorem Ipsum', day1, "STS", 'critical');
-    todo.addTask('Task 2', '', day3);
+    todo.addTask('Task 2', '', day3, "default");
     todo.addTask('Task 3', 'Task 3 description', day2, 'IAS', 'minor');
     todo.addTask('Task 4', '', day4, 'IAS', 'significant');
     todo.addTask('Task 5', '', day4, 'STS', 'minor');
     //end of test elements
-
-
     return {
         displayScreen,
     }
