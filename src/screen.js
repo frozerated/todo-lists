@@ -258,7 +258,7 @@ export function ScreenDisplay(todo) {
         const title = updateForm.querySelector('#title').value
         const dueDate = updateForm.querySelector('#dueDate').value;
         const project = updateForm.querySelector('#projectInput').value
-        const priority = updateForm.querySelector('#priorityInput').value
+        const priority = updateForm.querySelector('#priorityInput').value.toLowerCase();
         const description = updateForm.querySelector('#description').value
 
 
