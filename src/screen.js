@@ -80,13 +80,16 @@ export function ScreenDisplay(todo) {
         console.log(itemList.sort((task_1, task_2) => task_1.dueDate - task_2.dueDate)) 
         for(const taskItem of itemList) {
             const itemContainer = document.createElement('div');
-            itemContainer.classList = `itemContainer`
+            itemContainer.classList = `itemContainer`;
+            
             itemContainer.id = taskItem['id'];
-            itemContainer.addEventListener('click', (event) => {
+            itemContainer.projectName = taskItem.project;
+            
+            itemContainer.addEventListener('click', (event) => {                
                 if (event.target !== event.currentTarget) {
                     return
                 }
-                openTaskDetails(event.target.id)
+                openTaskDetails(event.target.projectName, event.target.id)
 
             }, true)
 
@@ -123,6 +126,7 @@ export function ScreenDisplay(todo) {
             itemContainer.appendChild(taskProject)
 
             const completeButton = document.createElement('button');
+            completeButton.projectName = taskItem.project
             completeButton.textContent = "Done"
             completeButton.classList = 'completeButton';
 
@@ -138,9 +142,9 @@ export function ScreenDisplay(todo) {
 
     }
 
-    const openTaskDetails = (taskID) => {
+    const openTaskDetails = (projectName, taskID) => {
         const allTaskContainer = document.querySelector('.main');
-        const task = todo.getTask(taskID)
+        const task = todo.getTask(projectName, taskID)
 
         const originalDialogHeader = document.querySelector('.dialog-header');
         const dialogHeader = originalDialogHeader.cloneNode(true);
@@ -232,7 +236,7 @@ export function ScreenDisplay(todo) {
         saveButton.type = 'submit';
         saveButton.addEventListener('click', event => {
             event.preventDefault();
-            updateTaskDetails(taskID)
+            updateTaskDetails(projectName, taskID)
             updateTaskDisplay();
             taskDetailModal.close()
             taskDetailModal.remove();
@@ -249,7 +253,7 @@ export function ScreenDisplay(todo) {
         taskDetailModal.showModal();
     }
 
-    const updateTaskDetails = (taskID) => {
+    const updateTaskDetails = (currentProject, taskID) => {
         const updateForm = document.querySelector('#task-update-detail')
         const title = updateForm.querySelector('#title').value
         const dueDate = updateForm.querySelector('#dueDate').value;
@@ -259,7 +263,7 @@ export function ScreenDisplay(todo) {
 
 
 
-        todo.updateTask(taskID, title, dueDate, project, priority, description);
+        todo.updateTask(taskID, currentProject, title, dueDate, project, priority, description);
     }
 
 
@@ -358,7 +362,7 @@ export function ScreenDisplay(todo) {
 
     const markComplete = (event) => {
         event.stopPropagation();
-        todo.removeTask(todo.getTask(event.target.id));
+        todo.removeTask(todo.getTask(event.target.projectName, event.target.id));
         updateTaskDisplay(taskDisplay.id);
     }
 

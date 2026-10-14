@@ -25,14 +25,15 @@ export function Todo() {
         // }
     }
 
-    const getTask = (taskID) => {
-
-        return getProjectFolder('default').projectTodo.find(task => task.id == taskID);
+    const getTask = (projectName, taskID) => {
+        console.log(projectName);
+        
+        return getProjectFolder(projectName).projectTodo.find(task => task.id == taskID);
     }
 
-    const updateTask = (taskID, title, dueDate, project, priority, description = "") => {
-
-        const task = getTask(taskID);
+    const updateTask = (taskID, currentProject, title, dueDate, project, priority, description = "") => {
+        console.log(getProjectFolder(project))
+        const task = getTask(currentProject, taskID);
         moveTaskProject(project, task)
         if (task) {
             Object.assign(task, {
@@ -67,11 +68,11 @@ export function Todo() {
 
     const removeTask = (task) => {
         const projectFolder = project.find(projectFolder => projectFolder.projectName == task.project)
-        const defaultProject = project.find(projectFolder => projectFolder.projectName == 'default');
+        // const defaultProject = project.find(projectFolder => projectFolder.projectName == 'default');
         const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
-        const defaultIndex = defaultProject.projectTodo.findIndex(item => item.id == task.id);
-        defaultProject.projectTodo.splice(defaultIndex, 1);
-        if(task.project != 'default') projectFolder.projectTodo.splice(taskIndex, 1);
+        // const defaultIndex = defaultProject.projectTodo.findIndex(item => item.id == task.id);
+        // defaultProject.projectTodo.splice(defaultIndex, 1);
+        projectFolder.projectTodo.splice(taskIndex, 1);
         
     }
 
@@ -79,14 +80,11 @@ export function Todo() {
         const currentProject = getProjectFolder(task.project);
 
         const taskIndex = currentProject.projectTodo.findIndex(item => item.id == task.id);
-        
-        if (task.project != 'default') {
+
             currentProject.projectTodo.splice(taskIndex, 1);
-        }
-        if (newProject != 'default') {
             const projectDestination = getProjectFolder(newProject);
             projectDestination.projectTodo.push(task)
-        }
+
     
 
     }
