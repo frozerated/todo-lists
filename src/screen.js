@@ -77,6 +77,7 @@ export function ScreenDisplay(todo) {
 
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
+        console.log(itemList.sort((task_1, task_2) => task_1.dueDate - task_2.dueDate)) 
         for(const taskItem of itemList) {
             const itemContainer = document.createElement('div');
             itemContainer.classList = `itemContainer`
