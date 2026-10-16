@@ -77,7 +77,7 @@ export function ScreenDisplay(todo) {
 
     const displayTasks = (displayArea, itemList) => {
         taskDisplay.textContent = "";
-        console.log(itemList.sort((task_1, task_2) => compareAsc(task_1.dueDate, task_2.dueDate)));
+        itemList.sort((task_1, task_2) => compareAsc(task_1.dueDate, task_2.dueDate));
         for(const taskItem of itemList) {
             const itemContainer = document.createElement('div');
             itemContainer.classList = `itemContainer`;
@@ -371,24 +371,7 @@ export function ScreenDisplay(todo) {
     // -- for testing purposes
 
     //projects
-    todo.addProject("STS");
-    todo.addProject("IAS", '#8eccb6');
-
-
-    //duedDate -> show different task state
-    const dueDate = `${8}, ${8}, ${2026}`;
-    const day1 = endOfToday(new Date());
-    const day2 = endOfYesterday()
-    const currentYear = getYear(new Date())
-    const day3 = setYear(new Date(2005, 10, 25), currentYear);
-    const day4 = addDays(new Date(), 3)
-
-    //task creation
-    todo.addTask('Task 1', 'Lorem Ipsum', day1, "STS", 'critical');
-    todo.addTask('Task 2', '', day3, "default");
-    todo.addTask('Task 3', 'Task 3 description', day2, 'IAS', 'minor');
-    todo.addTask('Task 4', '', day4, 'IAS', 'significant');
-    todo.addTask('Task 5', '', day4, 'STS', 'minor');
+  
     //end of test elements
     return {
         displayScreen,
