@@ -4,11 +4,15 @@ import { format, endOfToday } from "date-fns";
 export function Todo(project=[]) {
     // let project = [];
 
+    if(!project){
+        addProject('default');
+    }
+
     const getProjects = () => project;
     const addProject = (title, color) => {
         project.push(projectItem(title, color));
     }
-    addProject('default');
+    
 
     const getProjectFolder = (projectName) => {
         return project.find(project => project.projectName == projectName);
