@@ -1,8 +1,8 @@
 import { format, endOfToday } from "date-fns";
 
 
-export function Todo() {
-    let project = [];
+export function Todo(project=[]) {
+    // let project = [];
 
     const getProjects = () => project;
     const addProject = (title, color) => {
