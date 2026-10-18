@@ -30,7 +30,7 @@ export function Todo(project = []) {
 
     const updateTask = (taskID, currentProject, title, dueDate, project, priority, description = "") => {
         const task = getTask(currentProject, taskID);
-        moveTaskProject(project, task)
+       
         if (task) {
             Object.assign(task, {
                 title,
@@ -39,6 +39,9 @@ export function Todo(project = []) {
                 priority,
                 description,
             })
+            if(currentProject != project){
+                moveTaskProject(project, task);
+            }
 
         }
     }
