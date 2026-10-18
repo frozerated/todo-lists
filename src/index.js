@@ -1,5 +1,4 @@
-// // index.js
-import { endOfToday, format, differenceInCalendarDays, addDays, getYear, setYear, formatDistanceToNow, isPast, endOfYesterday, compareAsc, } from "date-fns";
+import { endOfToday, addDays, getYear, setYear, endOfYesterday } from "date-fns";
 import { Todo } from "./todo.js";
 import {ScreenDisplay} from "./screen.js";
 import "./style.css";
@@ -10,7 +9,6 @@ import "./modal.css";
 
 const screen = ScreenDisplay(setProject());
 screen.displayScreen();
-
 
 function setProject(){
   

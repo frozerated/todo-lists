@@ -1,5 +1,4 @@
-import { endOfToday, format, differenceInCalendarDays, addDays, getYear, setYear, formatDistanceToNow, isPast, endOfYesterday, compareAsc, } from "date-fns";
-import { Todo } from "./todo.js";
+import { endOfToday, format, differenceInCalendarDays, formatDistanceToNow, isPast, compareAsc, } from "date-fns";
 import { resetProjectForm, resetTaskForm } from "./resetForms.js";
 import { getTextColorHEX } from "./colorUtils.js";
 
@@ -366,7 +365,7 @@ export function ScreenDisplay(todo) {
         updateTaskDisplay(taskDisplay.id);
     }
 
-    
+
     return {
         displayScreen,
     }
