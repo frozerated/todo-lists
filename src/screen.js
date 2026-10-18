@@ -366,13 +366,7 @@ export function ScreenDisplay(todo) {
         updateTaskDisplay(taskDisplay.id);
     }
 
-
-
-    // -- for testing purposes
-
-    //projects
-  
-    //end of test elements
+    
     return {
         displayScreen,
     }
