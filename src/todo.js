@@ -3,9 +3,15 @@ import { format, endOfToday } from "date-fns";
 
 export function Todo(project = []) {
 
+    const saveChanges = () => {
+        const projects = JSON.stringify(getProjects());
+        sessionStorage.setItem("todoProjects", projects);
+    }
+
     const getProjects = () => project;
     const addProject = (title, color) => {
         project.push(projectItem(title, color));
+        saveChanges();
     }
 
     if (project.length == 0) {
@@ -21,6 +27,7 @@ export function Todo(project = []) {
         const newTask = todoItem(title, description, dueDate, projectName, priority);
 
         getProjectFolder(projectName).projectTodo.push(newTask);
+        saveChanges();
 
     }
 
@@ -30,8 +37,11 @@ export function Todo(project = []) {
 
     const updateTask = (taskID, currentProject, title, dueDate, project, priority, description = "") => {
         const task = getTask(currentProject, taskID);
-       
+
         if (task) {
+            if (currentProject != project) {
+                moveTaskProject(project, task);
+            }
             Object.assign(task, {
                 title,
                 dueDate,
@@ -39,15 +49,14 @@ export function Todo(project = []) {
                 priority,
                 description,
             })
-            if(currentProject != project){
-                moveTaskProject(project, task);
-            }
+
+            saveChanges();
 
         }
     }
 
     const removeProject = (projectName) => {
-
+        if (projectName == "default") return;
         const defaultProject = getProjectFolder('default').projectTodo
 
         let taskToDelete = [];
@@ -56,23 +65,31 @@ export function Todo(project = []) {
         }
 
         taskToDelete.forEach(element => {
-            removeTask(element);
+            removeTask(element, true);
         });
 
         const projectIndex = project.findIndex((project) => project.projectName == projectName)
         project.splice(projectIndex, 1);
+
+        saveChanges();
     }
 
 
 
-    const removeTask = (task) => {
+    const removeTask = (task, skipSave) => {
+
         const projectFolder = project.find(projectFolder => projectFolder.projectName == task.project)
         const taskIndex = projectFolder.projectTodo.findIndex(item => item.id == task.id);
         projectFolder.projectTodo.splice(taskIndex, 1);
 
+        if(!skipSave){
+            saveChanges();
+        }
+
     }
 
     const moveTaskProject = (newProject, task) => {
+
         const currentProject = getProjectFolder(task.project);
         const taskIndex = currentProject.projectTodo.findIndex(item => item.id == task.id);
         currentProject.projectTodo.splice(taskIndex, 1);
